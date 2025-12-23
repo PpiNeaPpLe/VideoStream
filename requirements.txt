@@ -1,6 +1,6 @@
 mss==9.0.1
 opencv-python==4.8.1.78
-numpy==1.26
+numpy==1.26.4
 flask==3.0.0
 flask-socketio==5.3.6
 pyautogui==0.9.54
