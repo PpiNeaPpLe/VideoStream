@@ -153,7 +153,7 @@ def receive_stream(host, port=8080, mouse_port=8081):
         print("Connection closed")
 
 if __name__ == "__main__":
-    # Replace with the IP address of the PC (Ethernet 2 interface)
-    # You can find this by running: ipconfig in cmd and looking for "Ethernet 2"
-    SERVER_IP = "169.254.210.134"  # Your PC's Ethernet 2 IP
+    # Replace with the IP address of the server PC
+    # You can find this by running: ipconfig in cmd and looking for your network adapter
+    SERVER_IP = "192.168.1.129"  # Your server's IP address
     receive_stream(SERVER_IP, port=8080, mouse_port=8081)
