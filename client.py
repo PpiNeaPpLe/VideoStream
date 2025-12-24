@@ -136,6 +136,11 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False)
     """Receive and display video stream from server with mouse control"""
     logger.info(f"Starting video stream client - Host: {host}, Video Port: {port}, Mouse Port: {mouse_port}, Face Tracking: {enable_face_tracking}")
 
+    if enable_face_tracking:
+        logger.info("FACE TRACKING IS ENABLED - will detect faces and move cursor")
+    else:
+        logger.info("Face tracking is DISABLED - use --face-tracking to enable")
+
     # Video stream socket
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -194,6 +199,10 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False)
                 if enable_face_tracking and mouse_socket:
                     logger.debug("Face tracking enabled, processing frame for faces")
                     faces = detect_faces(original_frame)
+                elif enable_face_tracking and mouse_socket is None:
+                    logger.warning("Face tracking enabled but mouse socket is None - cannot send mouse commands")
+                elif not enable_face_tracking:
+                    logger.debug("Face tracking disabled - skipping face detection")
 
                     if len(faces) > 0:
                         # Use the largest face (or first face if multiple)
