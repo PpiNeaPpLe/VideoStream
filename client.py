@@ -156,4 +156,9 @@ if __name__ == "__main__":
     # Replace with the IP address of the server PC
     # You can find this by running: ipconfig in cmd and looking for your network adapter
     SERVER_IP = "192.168.1.129"  # Your server's IP address
+
+    # Alternative: Uncomment the line below to auto-discover server IP
+    # import socket
+    # SERVER_IP = socket.gethostbyname(socket.gethostname())
+
     receive_stream(SERVER_IP, port=8080, mouse_port=8081)
