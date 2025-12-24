@@ -7,21 +7,34 @@ import threading
 import argparse
 import time
 import os
+import logging
+
+# Set up logging (will be configured based on command line args)
+logger = logging.getLogger(__name__)
 
 def detect_faces(frame, scale_factor=1.1, min_neighbors=5, min_size=(30, 30)):
     """Detect faces in a frame using Haar cascades"""
+    logger.debug("Starting face detection on frame")
+
     # Convert to grayscale for face detection
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    logger.debug(f"Converted frame to grayscale, shape: {gray.shape}")
 
     # Load the face cascade classifier
     face_cascade_path = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
+    logger.debug(f"Face cascade path: {face_cascade_path}")
 
     # Check if cascade file exists
     if not os.path.exists(face_cascade_path):
-        print(f"Warning: Haar cascade file not found at {face_cascade_path}")
+        logger.error(f"Haar cascade file not found at {face_cascade_path}")
         return []
 
     face_cascade = cv2.CascadeClassifier(face_cascade_path)
+    if face_cascade.empty():
+        logger.error("Failed to load face cascade classifier")
+        return []
+
+    logger.debug("Face cascade classifier loaded successfully")
 
     # Detect faces
     faces = face_cascade.detectMultiScale(
@@ -31,6 +44,11 @@ def detect_faces(frame, scale_factor=1.1, min_neighbors=5, min_size=(30, 30)):
         minSize=min_size,
         flags=cv2.CASCADE_SCALE_IMAGE
     )
+
+    logger.info(f"Face detection completed - found {len(faces)} faces")
+    if len(faces) > 0:
+        for i, (x, y, w, h) in enumerate(faces):
+            logger.info(f"Face {i+1}: position ({x}, {y}), size {w}x{h}")
 
     return faces
 
@@ -116,6 +134,8 @@ def mouse_callback(event, x, y, flags, param):
 
 def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False):
     """Receive and display video stream from server with mouse control"""
+    logger.info(f"Starting video stream client - Host: {host}, Video Port: {port}, Mouse Port: {mouse_port}, Face Tracking: {enable_face_tracking}")
+
     # Video stream socket
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -123,18 +143,19 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False)
     mouse_socket = None
     try:
         mouse_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        logger.info(f"Connecting to mouse control server at {host}:{mouse_port}")
         mouse_socket.connect((host, mouse_port))
-        print(f"Mouse control connected to {host}:{mouse_port}")
+        logger.info(f"Mouse control connected successfully to {host}:{mouse_port}")
     except Exception as e:
-        print(f"Mouse control connection failed: {e}")
+        logger.error(f"Mouse control connection failed: {e}")
         mouse_socket = None
 
-    print(f"Connecting to video stream at {host}:{port}...")
+    logger.info(f"Connecting to video stream at {host}:{port}...")
     try:
         client_socket.connect((host, port))
-        print("Video stream connected! Receiving stream...")
+        logger.info("Video stream connected! Receiving stream...")
     except Exception as e:
-        print(f"Failed to connect to video stream: {e}")
+        logger.error(f"Failed to connect to video stream: {e}")
         if mouse_socket:
             mouse_socket.close()
         return
@@ -165,11 +186,13 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False)
             frame = cv2.imdecode(np.frombuffer(frame_data, dtype=np.uint8), cv2.IMREAD_COLOR)
 
             if frame is not None:
+                logger.debug(f"Decoded frame successfully, shape: {frame.shape}")
                 # Get window info for coordinate scaling
                 original_frame = frame.copy()  # Keep original for face detection
 
                 # Perform face detection if enabled
                 if enable_face_tracking and mouse_socket:
+                    logger.debug("Face tracking enabled, processing frame for faces")
                     faces = detect_faces(original_frame)
 
                     if len(faces) > 0:
@@ -177,9 +200,13 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False)
                         largest_face = max(faces, key=lambda f: f[2] * f[3])
                         face_x, face_y, face_w, face_h = largest_face
 
+                        logger.info(f"Selected largest face: position ({face_x}, {face_y}), size {face_w}x{face_h}")
+
                         # Calculate center of face
                         face_center_x = face_x + face_w // 2
                         face_center_y = face_y + face_h // 2
+
+                        logger.debug(f"Face center in frame coordinates: ({face_center_x}, {face_center_y})")
 
                         # Scale coordinates to original screen size
                         scale_x = 1920 / frame.shape[1]  # Assuming server streams at 1920x1080
@@ -188,6 +215,8 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False)
                         screen_x = int(face_center_x * scale_x)
                         screen_y = int(face_center_y * scale_y)
 
+                        logger.info(f"Scaled to screen coordinates: ({screen_x}, {screen_y}) with scale factors ({scale_x:.2f}, {scale_y:.2f})")
+
                         # Send mouse move command to face position
                         command = {
                             'type': 'move',
@@ -195,12 +224,14 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False)
                             'y': screen_y
                         }
 
+                        logger.debug(f"Sending face tracking mouse command: {command}")
+
                         try:
                             message = json.dumps(command) + '\n'
                             mouse_socket.sendall(message.encode('utf-8'))
-                            print(f"Face detected - moved cursor to ({screen_x}, {screen_y})")
+                            logger.info(f"Face tracking: moved cursor to ({screen_x}, {screen_y})")
                         except Exception as e:
-                            print(f"Failed to send face tracking command: {e}")
+                            logger.error(f"Failed to send face tracking command: {e}")
 
                     # Draw face rectangles for visualization
                     frame = draw_face_rectangles(frame, faces)
@@ -219,15 +250,16 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False)
                     # Set mouse callback with mouse socket and window info
                     cv2.setMouseCallback(window_name, mouse_callback, (mouse_socket, window_info))
                     mouse_callback_set = True
-                    print("Mouse callback set up for window")
+                    logger.info("Mouse callback set up for window")
                     if enable_face_tracking:
-                        print("Face tracking enabled - cursor will follow detected faces")
+                        logger.info("Face tracking enabled - cursor will follow detected faces")
+                        logger.info("Face detection parameters: scale_factor=1.1, min_neighbors=5, min_size=(30,30)")
 
                 # Press 'q' to quit
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
             else:
-                print("Failed to decode frame")
+                logger.warning("Failed to decode frame")
 
     except Exception as e:
         print(f"Error: {e}")
@@ -288,11 +320,26 @@ if __name__ == "__main__":
                        help='Run mouse control test with circular movements')
     parser.add_argument('--face-tracking', action='store_true',
                        help='Enable automatic face tracking - cursor follows detected faces')
+    parser.add_argument('--log-level', choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'],
+                       default='DEBUG', help='Set logging level (default: DEBUG)')
 
     args = parser.parse_args()
 
+    # Configure logging based on command line argument
+    log_level = getattr(logging, args.log_level.upper())
+    logging.basicConfig(
+        level=log_level,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler('client.log', mode='w')
+        ]
+    )
+
     if args.test:
+        logger.info("Running mouse control test")
         test_mouse_control(args.host, args.mouse_port)
     else:
+        logger.info("Starting video stream client")
         receive_stream(args.host, port=args.port, mouse_port=args.mouse_port,
                       enable_face_tracking=args.face_tracking)
