@@ -12,6 +12,14 @@ import logging
 # Set up logging (will be configured based on command line args)
 logger = logging.getLogger(__name__)
 
+# Global cascade classifier cache for performance
+_cascade_cache = {}
+
+# Global face tracking state for ROI optimization
+_last_face_roi = None
+_frames_since_face = 0
+_MAX_FRAMES_WITHOUT_FACE = 30  # Reset ROI after this many frames without face
+
 def detect_faces_dnn(frame, confidence_threshold=0.5):
     """Detect faces using DNN model with actual confidence scores"""
     logger.debug(f"DNN face detection starting with confidence threshold {confidence_threshold}")
@@ -68,42 +76,34 @@ def detect_faces(frame, method='haar', confidence_threshold=0.5, scale_factor=1.
         return detect_faces_haar(frame, scale_factor, min_neighbors, min_size)
 
 def detect_faces_haar(frame, scale_factor=1.1, min_neighbors=5, min_size=(30, 30)):
-    """Detect faces in a frame using Haar cascades"""
+    """Detect faces in a frame using Haar cascades with caching for performance"""
     logger.debug("Starting face detection on frame")
 
     # Convert to grayscale for face detection
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     logger.debug(f"Converted frame to grayscale, shape: {gray.shape}")
 
-    # Load the face cascade classifier
-    face_cascade_path = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
-    logger.debug(f"Face cascade path: {face_cascade_path}")
+    # Use cached cascade classifier for performance
+    cascade_path = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
+    cache_key = cascade_path
 
-    # Check if cascade file exists
-    if not os.path.exists(face_cascade_path):
-        logger.error(f"Haar cascade file not found at {face_cascade_path}")
-        return []
+    if cache_key not in _cascade_cache:
+        logger.debug(f"Loading cascade classifier (first time): {cascade_path}")
+        if not os.path.exists(cascade_path):
+            logger.error(f"Haar cascade file not found at {cascade_path}")
+            return []
 
-    face_cascade = cv2.CascadeClassifier(face_cascade_path)
-    if face_cascade.empty():
-        logger.error("Failed to load face cascade classifier")
-        return []
+        face_cascade = cv2.CascadeClassifier(cascade_path)
+        if face_cascade.empty():
+            logger.error("Failed to load face cascade classifier")
+            return []
 
-    logger.debug("Face cascade classifier loaded successfully")
+        _cascade_cache[cache_key] = face_cascade
+        logger.info("Cascade classifier loaded and cached")
+    else:
+        face_cascade = _cascade_cache[cache_key]
 
-    # Try different minNeighbors values for confidence-like information
-    confidence_levels = []
-    for min_n in [1, 3, 5]:  # Lower = more detections, higher = more confident
-        temp_faces = face_cascade.detectMultiScale(
-            gray,
-            scaleFactor=scale_factor,
-            minNeighbors=min_n,
-            minSize=min_size,
-            flags=cv2.CASCADE_SCALE_IMAGE
-        )
-        confidence_levels.append((min_n, len(temp_faces)))
-
-    # Detect faces with the configured threshold
+    # Single pass face detection (removed unnecessary confidence testing)
     faces = face_cascade.detectMultiScale(
         gray,
         scaleFactor=scale_factor,
@@ -113,7 +113,6 @@ def detect_faces_haar(frame, scale_factor=1.1, min_neighbors=5, min_size=(30, 30
     )
 
     logger.info(f"Face detection completed - found {len(faces)} faces")
-    logger.debug(f"Detection confidence levels: minNeighbors=1:{confidence_levels[0][1]} faces, minNeighbors=3:{confidence_levels[1][1]} faces, minNeighbors=5:{confidence_levels[2][1]} faces")
 
     if len(faces) > 0:
         for i, (x, y, w, h) in enumerate(faces):
@@ -207,7 +206,8 @@ def mouse_callback(event, x, y, flags, param):
         print(f"Mouse callback error: {e}")
 
 def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False,
-                  face_detection_method='haar', face_confidence_threshold=0.5, stream_only=False):
+                  face_detection_method='haar', face_confidence_threshold=0.5, stream_only=False,
+                  face_processing_frequency=5, face_min_size=30):
     """Receive and display video stream from server with mouse control"""
     logger.info(f"Starting video stream client - Host: {host}, Video Port: {port}, Mouse Port: {mouse_port}, Face Tracking: {enable_face_tracking}, Stream Only: {stream_only}")
 
@@ -305,14 +305,56 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False,
                     # Perform face detection if enabled (skip frames for performance)
                     faces = []  # Initialize faces list
                     frame_counter += 1
-                    should_detect_faces = enable_face_tracking and mouse_socket and (frame_counter % 3 == 0)  # Process every 3rd frame
+                    should_detect_faces = enable_face_tracking and mouse_socket and (frame_counter % face_processing_frequency == 0)
 
                     logger.debug(f"Frame processing: enable_face_tracking={enable_face_tracking}, mouse_socket={mouse_socket is not None}, frame_counter={frame_counter}, should_detect={should_detect_faces}")
                     if should_detect_faces:
-                        logger.info(f"Face tracking enabled, processing frame for faces using {face_detection_method} method")
-                        logger.debug(f"Frame shape for detection: {original_frame.shape}")
-                        faces = detect_faces(original_frame, method=face_detection_method,
-                                           confidence_threshold=face_confidence_threshold)
+                        logger.info(f"Face tracking enabled, processing frame for faces using {face_detection_method} method (every {face_processing_frequency} frames)")
+
+                        # Use ROI optimization for faster detection
+                        detection_frame = original_frame
+                        global _last_face_roi, _frames_since_face
+
+                        if _last_face_roi is not None and _frames_since_face < _MAX_FRAMES_WITHOUT_FACE:
+                            # Focus detection on last known face area with some padding
+                            x, y, w, h = _last_face_roi
+                            padding = max(w, h) // 2  # Add padding around the face
+                            x1 = max(0, x - padding)
+                            y1 = max(0, y - padding)
+                            x2 = min(original_frame.shape[1], x + w + padding)
+                            y2 = min(original_frame.shape[0], y + h + padding)
+
+                            roi_frame = original_frame[y1:y2, x1:x2]
+                            logger.debug(f"Using ROI for face detection: {roi_frame.shape} from original {original_frame.shape}")
+                            detection_frame = roi_frame
+                        else:
+                            logger.debug("Using full frame for face detection (no recent face ROI)")
+
+                        logger.debug(f"Frame shape for detection: {detection_frame.shape}")
+                        faces = detect_faces(detection_frame, method=face_detection_method,
+                                           confidence_threshold=face_confidence_threshold,
+                                           min_size=(face_min_size, face_min_size))
+
+                        # Adjust face coordinates back to full frame if using ROI
+                        if _last_face_roi is not None and _frames_since_face < _MAX_FRAMES_WITHOUT_FACE and len(faces) > 0:
+                            x_offset, y_offset = _last_face_roi[0] - max(0, _last_face_roi[0] - max(_last_face_roi[2], _last_face_roi[3]) // 2), \
+                                               _last_face_roi[1] - max(0, _last_face_roi[1] - max(_last_face_roi[2], _last_face_roi[3]) // 2)
+                            faces = [(x + x_offset, y + y_offset, w, h) for x, y, w, h in faces]
+                            logger.debug(f"Adjusted face coordinates from ROI back to full frame")
+
+                        # Update ROI tracking
+                        if len(faces) > 0:
+                            # Use the largest face for ROI tracking
+                            largest_face = max(faces, key=lambda f: f[2] * f[3])
+                            _last_face_roi = largest_face
+                            _frames_since_face = 0
+                            logger.debug(f"Updated face ROI: {largest_face}")
+                        else:
+                            _frames_since_face += face_processing_frequency
+                            if _frames_since_face >= _MAX_FRAMES_WITHOUT_FACE:
+                                _last_face_roi = None
+                                logger.debug("Reset face ROI (no faces detected recently)")
+
                         logger.debug(f"Face detection returned {len(faces)} faces")
                     elif enable_face_tracking and mouse_socket is None:
                         logger.warning("Face tracking enabled but mouse socket is None - cannot send mouse commands")
@@ -453,6 +495,10 @@ if __name__ == "__main__":
                        default='haar', help='Face detection method: haar (fast, recommended) or dnn (accurate but slower)')
     parser.add_argument('--face-confidence-threshold', type=float, default=0.5,
                        help='Minimum confidence threshold for DNN face detection (0.0-1.0)')
+    parser.add_argument('--face-processing-frequency', type=int, default=5,
+                       help='Process every Nth frame for face detection (higher = faster but less responsive, default: 5)')
+    parser.add_argument('--face-min-size', type=int, default=30,
+                       help='Minimum face size for detection in pixels (default: 30)')
     parser.add_argument('--stream', action='store_true',
                        help='Stream-only mode: display video without mouse control or face tracking for latency testing')
     parser.add_argument('--log-level', choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'],
@@ -480,4 +526,6 @@ if __name__ == "__main__":
                       enable_face_tracking=args.face_tracking,
                       face_detection_method=args.face_detection_method,
                       face_confidence_threshold=args.face_confidence_threshold,
-                      stream_only=args.stream)
+                      stream_only=args.stream,
+                      face_processing_frequency=args.face_processing_frequency,
+                      face_min_size=args.face_min_size)
