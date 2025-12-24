@@ -198,8 +198,8 @@ def test_mouse_control(host, port=8081):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Screen Stream Client with Mouse Control')
-    parser.add_argument('--host', default='192.168.1.129',
-                       help='Server IP address (default: 192.168.1.129)')
+    parser.add_argument('--host', default='192.168.2.1',
+                       help='Server IP address (default: 192.168.2.1)')
     parser.add_argument('--port', type=int, default=8080,
                        help='Video stream port (default: 8080)')
     parser.add_argument('--mouse-port', type=int, default=8081,
