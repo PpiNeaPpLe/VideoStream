@@ -5,6 +5,7 @@ import numpy as np
 import time
 import threading
 import socket
+import struct
 import json
 import pyautogui
 from flask_socketio import SocketIO, emit
@@ -77,6 +78,74 @@ class ScreenStreamer:
     def stop(self):
         """Stop the capture loop"""
         self.running = False
+
+class VideoStreamer:
+    def __init__(self, host='0.0.0.0', port=8080):
+        self.host = host
+        self.port = port
+        self.server_socket = None
+        self.running = True
+        print(f"Video streamer initialized on port {port}")
+
+    def video_server_loop(self):
+        """Main loop for video streaming server"""
+        self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
+        try:
+            self.server_socket.bind((self.host, self.port))
+            self.server_socket.listen(5)
+            print(f"Video streaming server listening on {self.host}:{self.port}")
+
+            while self.running:
+                try:
+                    client_socket, addr = self.server_socket.accept()
+                    print(f"Video client connected from {addr}")
+                    threading.Thread(target=self.handle_client, args=(client_socket,), daemon=True).start()
+                except Exception as e:
+                    if self.running:
+                        print(f"Error accepting video client connection: {e}")
+
+        except Exception as e:
+            print(f"Video server error: {e}")
+        finally:
+            if self.server_socket:
+                self.server_socket.close()
+
+    def handle_client(self, client_socket):
+        """Handle individual video client connection"""
+        try:
+            while self.running:
+                # Get latest frame from screen streamer
+                frame_data = streamer.get_frame()
+                if frame_data is None:
+                    time.sleep(0.01)  # Wait a bit if no frame available
+                    continue
+
+                # Send frame size (4 bytes, big-endian)
+                frame_size = len(frame_data)
+                size_data = struct.pack('>L', frame_size)
+                client_socket.sendall(size_data)
+
+                # Send frame data
+                client_socket.sendall(frame_data)
+
+                # Control frame rate (target ~30 FPS)
+                time.sleep(1/30)
+
+        except Exception as e:
+            print(f"Video client error: {e}")
+        finally:
+            client_socket.close()
+
+    def stop(self):
+        """Stop the video server"""
+        self.running = False
+        if self.server_socket:
+            try:
+                self.server_socket.close()
+            except:
+                pass
 
 class MouseController:
     def __init__(self, host='0.0.0.0', port=8081):
@@ -452,26 +521,35 @@ def video_feed():
     return Response(generate_frames(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
+# Initialize controllers (after class definitions)
+video_streamer = VideoStreamer(host='0.0.0.0', port=8080)
+mouse_controller = MouseController(host='0.0.0.0', port=8081)
+
 if __name__ == '__main__':
     # Start the screen capture thread
     capture_thread = threading.Thread(target=streamer.capture_loop, daemon=True)
     capture_thread.start()
+
+    # Start the video streaming server thread
+    video_thread = threading.Thread(target=video_streamer.video_server_loop, daemon=True)
+    video_thread.start()
 
     # Start the mouse control server thread
     mouse_thread = threading.Thread(target=mouse_controller.mouse_server_loop, daemon=True)
     mouse_thread.start()
 
     print("Screen streaming server starting...")
-    print("Open your browser and go to: http://192.168.x.x:8080")
+    print("Python client connects to: 192.168.x.x:8080 (video) and :8081 (mouse)")
+    print("Web interface available at: http://192.168.x.x:8082")
     print("(Replace 192.168.x.x with your computer's IP address)")
-    print("Or try: http://localhost:8080 for local access")
-    print("Mouse control server running on port 8081")
+    print("Or try: http://localhost:8082 for local web access")
     print("Press Ctrl+C to stop the server")
 
     try:
-        socketio.run(app, host='0.0.0.0', port=8080)
+        socketio.run(app, host='0.0.0.0', port=8082)  # Web interface on port 8082
     except KeyboardInterrupt:
         print("\nStopping server...")
         streamer.stop()
+        video_streamer.stop()
         mouse_controller.stop()
         print("Server stopped.")

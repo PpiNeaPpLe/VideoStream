@@ -1,11 +1,1726 @@
-2025-12-23 23:12:46,197 - INFO - Starting video stream client
-2025-12-23 23:12:46,198 - INFO - Starting video stream client - Host: 192.168.2.1, Video Port: 8080, Mouse Port: 8081, Face Tracking: True
-2025-12-23 23:12:46,198 - INFO - FACE TRACKING IS ENABLED - will detect faces and move cursor
-2025-12-23 23:12:46,198 - INFO - Connecting to mouse control server at 192.168.2.1:8081
-2025-12-23 23:12:46,200 - INFO - Mouse control connected successfully to 192.168.2.1:8081
-2025-12-23 23:12:46,200 - INFO - Connecting to video stream at 192.168.2.1:8080...
-2025-12-23 23:12:46,201 - INFO - Video stream connected! Receiving stream...
-2025-12-23 23:12:46,201 - DEBUG - Starting frame 1 processing
-2025-12-23 23:12:46,201 - DEBUG - Waiting for frame size data (4 bytes needed)
-2025-12-23 23:12:46,202 - DEBUG - Received 0 bytes so far, waiting for 4 more
-2025-12-23 23:12:51,204 - ERROR - Timeout waiting for frame size data
+2025-12-23 23:15:33,440 - INFO - Starting video stream client
+2025-12-23 23:15:33,441 - INFO - Starting video stream client - Host: 192.168.2.1, Video Port: 8080, Mouse Port: 8081, Face Tracking: True
+2025-12-23 23:15:33,441 - INFO - FACE TRACKING IS ENABLED - will detect faces and move cursor
+2025-12-23 23:15:33,441 - INFO - Connecting to mouse control server at 192.168.2.1:8081
+2025-12-23 23:15:33,442 - INFO - Mouse control connected successfully to 192.168.2.1:8081
+2025-12-23 23:15:33,442 - INFO - Connecting to video stream at 192.168.2.1:8080...
+2025-12-23 23:15:33,443 - INFO - Video stream connected! Receiving stream...
+2025-12-23 23:15:33,443 - DEBUG - Starting frame 1 processing
+2025-12-23 23:15:33,443 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:33,443 - DEBUG - Received 0 bytes so far, waiting for 4 more
+2025-12-23 23:15:33,444 - DEBUG - Received chunk of 4096 bytes, total now 4096
+2025-12-23 23:15:33,446 - DEBUG - Received frame data of length: 216650 bytes
+2025-12-23 23:15:33,465 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:33,466 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:33,467 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:33,468 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:33,468 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:33,468 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:33,468 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:33,468 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:33,469 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:33,469 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:33,469 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:33,469 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:33,469 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:33,473 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:33,474 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:33,509 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:34,207 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:34,207 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:34,213 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:34,286 - INFO - Mouse callback set up for window
+2025-12-23 23:15:34,287 - INFO - Face tracking enabled - cursor will follow detected faces
+2025-12-23 23:15:34,287 - INFO - Face detection parameters: scale_factor=1.1, min_neighbors=5, min_size=(30,30)
+2025-12-23 23:15:34,291 - DEBUG - Starting frame 2 processing
+2025-12-23 23:15:34,291 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:34,292 - DEBUG - Received 0 bytes so far, waiting for 4 more
+2025-12-23 23:15:34,292 - DEBUG - Received chunk of 4096 bytes, total now 4096
+2025-12-23 23:15:34,296 - DEBUG - Received frame data of length: 216650 bytes
+2025-12-23 23:15:34,313 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:34,313 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:34,317 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:34,317 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:34,317 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:34,318 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:34,318 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:34,318 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:34,318 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:34,319 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:34,319 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:34,319 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:34,319 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:34,320 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:34,320 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:34,357 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:34,765 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:34,765 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:34,778 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:34,781 - DEBUG - Starting frame 3 processing
+2025-12-23 23:15:34,781 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:34,783 - DEBUG - Received frame data of length: 216650 bytes
+2025-12-23 23:15:34,800 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:34,800 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:34,802 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:34,803 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:34,803 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:34,803 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:34,803 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:34,804 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:34,804 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:34,804 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:34,805 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:34,805 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:34,805 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:34,806 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:34,806 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:34,835 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:35,268 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:35,268 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:35,275 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:35,279 - DEBUG - Starting frame 4 processing
+2025-12-23 23:15:35,280 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:35,282 - DEBUG - Received frame data of length: 216650 bytes
+2025-12-23 23:15:35,307 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:35,308 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:35,311 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:35,311 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:35,311 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:35,312 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:35,312 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:35,312 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:35,313 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:35,313 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:35,314 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:35,314 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:35,314 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:35,315 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:35,315 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:35,358 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:35,752 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:35,752 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:35,757 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:35,761 - DEBUG - Starting frame 5 processing
+2025-12-23 23:15:35,761 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:35,763 - DEBUG - Received frame data of length: 216650 bytes
+2025-12-23 23:15:35,784 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:35,784 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:35,787 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:35,787 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:35,787 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:35,788 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:35,788 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:35,788 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:35,788 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:35,788 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:35,789 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:35,789 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:35,789 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:35,790 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:35,790 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:35,822 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:36,229 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:36,229 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:36,234 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:36,238 - DEBUG - Starting frame 6 processing
+2025-12-23 23:15:36,238 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:36,239 - DEBUG - Received frame data of length: 216650 bytes
+2025-12-23 23:15:36,256 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:36,257 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:36,259 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:36,259 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:36,260 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:36,260 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:36,260 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:36,260 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:36,260 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:36,261 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:36,261 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:36,261 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:36,261 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:36,262 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:36,263 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:36,293 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:36,701 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:36,702 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:36,710 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:36,714 - DEBUG - Starting frame 7 processing
+2025-12-23 23:15:36,715 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:36,715 - DEBUG - Received frame data of length: 227867 bytes
+2025-12-23 23:15:36,737 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:36,737 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:36,740 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:36,740 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:36,740 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:36,740 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:36,740 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:36,741 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:36,741 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:36,741 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:36,741 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:36,741 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:36,742 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:36,742 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:36,742 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:36,765 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:37,224 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:37,224 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:37,231 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:37,235 - DEBUG - Starting frame 8 processing
+2025-12-23 23:15:37,235 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:37,238 - DEBUG - Received frame data of length: 227867 bytes
+2025-12-23 23:15:37,254 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:37,255 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:37,257 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:37,258 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:37,258 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:37,258 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:37,259 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:37,259 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:37,259 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:37,259 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:37,260 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:37,260 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:37,260 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:37,261 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:37,262 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:37,293 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:37,724 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:37,725 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:37,732 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:37,743 - DEBUG - Starting frame 9 processing
+2025-12-23 23:15:37,743 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:37,745 - DEBUG - Received frame data of length: 227867 bytes
+2025-12-23 23:15:37,766 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:37,766 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:37,770 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:37,770 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:37,771 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:37,771 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:37,771 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:37,771 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:37,771 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:37,772 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:37,772 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:37,772 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:37,772 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:37,773 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:37,773 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:37,815 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:38,288 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:38,288 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:38,294 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:38,300 - DEBUG - Starting frame 10 processing
+2025-12-23 23:15:38,300 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:38,302 - DEBUG - Received frame data of length: 227537 bytes
+2025-12-23 23:15:38,326 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:38,326 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:38,328 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:38,329 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:38,329 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:38,329 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:38,329 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:38,330 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:38,330 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:38,330 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:38,330 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:38,331 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:38,331 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:38,332 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:38,332 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:38,364 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:38,858 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:38,859 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:38,863 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:38,866 - DEBUG - Starting frame 11 processing
+2025-12-23 23:15:38,866 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:38,866 - DEBUG - Received frame data of length: 227537 bytes
+2025-12-23 23:15:38,890 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:38,891 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:38,894 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:38,895 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:38,895 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:38,895 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:38,895 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:38,896 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:38,896 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:38,896 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:38,897 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:38,897 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:38,897 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:38,898 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:38,898 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:38,932 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:39,363 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:39,364 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:39,368 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:39,373 - DEBUG - Starting frame 12 processing
+2025-12-23 23:15:39,373 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:39,375 - DEBUG - Received frame data of length: 227537 bytes
+2025-12-23 23:15:39,392 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:39,392 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:39,394 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:39,394 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:39,394 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:39,395 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:39,395 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:39,395 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:39,395 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:39,396 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:39,396 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:39,396 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:39,396 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:39,397 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:39,397 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:39,429 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:39,889 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:39,889 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:39,893 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:39,902 - DEBUG - Starting frame 13 processing
+2025-12-23 23:15:39,902 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:39,904 - DEBUG - Received frame data of length: 227235 bytes
+2025-12-23 23:15:39,923 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:39,924 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:39,926 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:39,927 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:39,927 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:39,927 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:39,927 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:39,928 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:39,928 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:39,928 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:39,928 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:39,929 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:39,929 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:39,930 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:39,930 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:39,962 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:40,464 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:40,464 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:40,467 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:40,473 - DEBUG - Starting frame 14 processing
+2025-12-23 23:15:40,473 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:40,477 - DEBUG - Received frame data of length: 227235 bytes
+2025-12-23 23:15:40,494 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:40,495 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:40,497 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:40,497 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:40,498 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:40,498 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:40,498 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:40,499 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:40,499 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:40,499 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:40,499 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:40,500 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:40,500 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:40,501 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:40,501 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:40,533 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:41,005 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:41,005 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:41,010 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:41,013 - DEBUG - Starting frame 15 processing
+2025-12-23 23:15:41,013 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:41,016 - DEBUG - Received frame data of length: 227235 bytes
+2025-12-23 23:15:41,034 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:41,035 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:41,037 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:41,038 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:41,038 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:41,038 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:41,038 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:41,039 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:41,039 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:41,039 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:41,039 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:41,040 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:41,040 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:41,040 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:41,041 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:41,075 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:41,530 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:41,530 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:41,537 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:41,542 - DEBUG - Starting frame 16 processing
+2025-12-23 23:15:41,542 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:41,544 - DEBUG - Received frame data of length: 226849 bytes
+2025-12-23 23:15:41,573 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:41,573 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:41,576 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:41,576 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:41,576 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:41,577 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:41,577 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:41,577 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:41,577 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:41,578 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:41,578 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:41,578 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:41,578 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:41,579 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:41,580 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:41,611 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:42,094 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:42,094 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:42,101 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:42,104 - DEBUG - Starting frame 17 processing
+2025-12-23 23:15:42,104 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:42,107 - DEBUG - Received frame data of length: 226849 bytes
+2025-12-23 23:15:42,127 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:42,128 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:42,131 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:42,131 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:42,131 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:42,132 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:42,132 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:42,132 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:42,132 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:42,133 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:42,133 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:42,133 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:42,133 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:42,134 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:42,134 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:42,166 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:42,618 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:42,618 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:42,623 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:42,627 - DEBUG - Starting frame 18 processing
+2025-12-23 23:15:42,627 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:42,630 - DEBUG - Received frame data of length: 226140 bytes
+2025-12-23 23:15:42,648 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:42,648 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:42,651 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:42,651 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:42,651 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:42,652 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:42,652 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:42,652 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:42,652 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:42,653 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:42,653 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:42,653 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:42,653 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:42,654 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:42,654 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:42,689 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:43,135 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:43,136 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:43,140 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:43,144 - DEBUG - Starting frame 19 processing
+2025-12-23 23:15:43,144 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:43,146 - DEBUG - Received frame data of length: 226140 bytes
+2025-12-23 23:15:43,164 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:43,164 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:43,167 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:43,167 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:43,167 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:43,167 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:43,168 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:43,168 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:43,168 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:43,169 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:43,169 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:43,169 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:43,170 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:43,170 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:43,171 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:43,208 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:43,644 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:43,645 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:43,652 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:43,657 - DEBUG - Starting frame 20 processing
+2025-12-23 23:15:43,657 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:43,660 - DEBUG - Received frame data of length: 226140 bytes
+2025-12-23 23:15:43,683 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:43,684 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:43,686 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:43,687 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:43,687 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:43,687 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:43,688 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:43,688 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:43,688 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:43,688 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:43,688 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:43,689 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:43,689 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:43,690 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:43,690 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:43,728 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:44,199 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:44,199 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:44,205 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:44,209 - DEBUG - Starting frame 21 processing
+2025-12-23 23:15:44,209 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:44,211 - DEBUG - Received frame data of length: 226140 bytes
+2025-12-23 23:15:44,233 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:44,234 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:44,236 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:44,236 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:44,237 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:44,237 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:44,237 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:44,237 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:44,238 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:44,238 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:44,238 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:44,238 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:44,239 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:44,239 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:44,240 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:44,270 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:44,734 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:44,735 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:44,743 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:44,747 - DEBUG - Starting frame 22 processing
+2025-12-23 23:15:44,747 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:44,750 - DEBUG - Received frame data of length: 235038 bytes
+2025-12-23 23:15:44,768 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:44,768 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:44,768 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:44,768 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:44,768 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:44,768 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:44,768 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:44,768 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:44,768 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:44,768 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:44,768 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:44,768 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:44,768 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:44,776 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:44,776 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:44,814 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:45,315 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:45,316 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:45,320 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:45,325 - DEBUG - Starting frame 23 processing
+2025-12-23 23:15:45,325 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:45,327 - DEBUG - Received frame data of length: 235038 bytes
+2025-12-23 23:15:45,344 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:45,345 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:45,347 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:45,347 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:45,347 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:45,348 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:45,348 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:45,348 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:45,348 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:45,349 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:45,349 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:45,349 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:45,349 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:45,350 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:45,350 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:45,391 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:45,849 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:45,849 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:45,854 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:45,859 - DEBUG - Starting frame 24 processing
+2025-12-23 23:15:45,860 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:45,863 - DEBUG - Received frame data of length: 235038 bytes
+2025-12-23 23:15:45,887 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:45,888 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:45,890 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:45,890 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:45,891 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:45,891 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:45,891 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:45,891 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:45,892 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:45,892 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:45,892 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:45,892 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:45,892 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:45,893 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:45,894 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:45,924 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:46,390 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:46,390 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:46,395 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:46,399 - DEBUG - Starting frame 25 processing
+2025-12-23 23:15:46,400 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:46,402 - DEBUG - Received frame data of length: 219297 bytes
+2025-12-23 23:15:46,419 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:46,420 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:46,422 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:46,422 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:46,423 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:46,423 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:46,423 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:46,423 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:46,423 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:46,424 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:46,424 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:46,424 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:46,424 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:46,425 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:46,426 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:46,455 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:46,913 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:46,914 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:46,918 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:46,922 - DEBUG - Starting frame 26 processing
+2025-12-23 23:15:46,922 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:46,925 - DEBUG - Received frame data of length: 219297 bytes
+2025-12-23 23:15:46,943 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:46,943 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:46,946 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:46,946 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:46,946 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:46,946 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:46,946 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:46,947 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:46,947 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:46,947 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:46,947 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:46,948 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:46,948 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:46,949 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:46,949 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:46,978 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:47,370 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:47,370 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:47,375 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:47,380 - DEBUG - Starting frame 27 processing
+2025-12-23 23:15:47,380 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:47,382 - DEBUG - Received frame data of length: 221689 bytes
+2025-12-23 23:15:47,399 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:47,400 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:47,402 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:47,402 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:47,402 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:47,403 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:47,403 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:47,403 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:47,403 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:47,404 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:47,404 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:47,404 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:47,404 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:47,405 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:47,405 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:47,441 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:47,908 - INFO - Face detection completed - found 0 faces
+2025-12-23 23:15:47,909 - DEBUG - Detection confidence levels: minNeighbors=1:0 faces, minNeighbors=3:0 faces, minNeighbors=5:0 faces
+2025-12-23 23:15:47,914 - DEBUG - Face detection returned 0 faces
+2025-12-23 23:15:47,917 - DEBUG - Starting frame 28 processing
+2025-12-23 23:15:47,918 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:47,920 - DEBUG - Received frame data of length: 224677 bytes
+2025-12-23 23:15:47,941 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:47,942 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:47,944 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:47,944 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:47,945 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:47,945 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:47,945 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:47,945 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:47,945 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:47,946 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:47,946 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:47,946 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:47,946 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:47,948 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:47,948 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:47,980 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:48,471 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:48,471 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:48,479 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:48,483 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:48,484 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:48,484 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:48,485 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:48,485 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:48,485 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:48,490 - DEBUG - Starting frame 29 processing
+2025-12-23 23:15:48,490 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:48,492 - DEBUG - Received frame data of length: 224731 bytes
+2025-12-23 23:15:48,510 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:48,510 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:48,513 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:48,513 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:48,513 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:48,513 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:48,514 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:48,514 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:48,514 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:48,515 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:48,515 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:48,515 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:48,515 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:48,516 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:48,517 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:48,552 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:49,028 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:49,028 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:49,028 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:49,033 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:49,033 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:49,033 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:49,034 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:49,034 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:49,034 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:49,040 - DEBUG - Starting frame 30 processing
+2025-12-23 23:15:49,040 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:49,045 - DEBUG - Received frame data of length: 224731 bytes
+2025-12-23 23:15:49,068 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:49,068 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:49,071 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:49,071 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:49,072 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:49,072 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:49,072 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:49,072 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:49,072 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:49,073 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:49,073 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:49,073 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:49,073 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:49,074 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:49,074 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:49,104 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:49,545 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:49,545 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:49,546 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:49,551 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:49,551 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:49,551 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:49,552 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:49,552 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:49,552 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:49,559 - DEBUG - Starting frame 31 processing
+2025-12-23 23:15:49,559 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:49,561 - DEBUG - Received frame data of length: 224731 bytes
+2025-12-23 23:15:49,578 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:49,579 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:49,581 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:49,581 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:49,582 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:49,582 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:49,582 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:49,582 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:49,583 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:49,583 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:49,583 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:49,584 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:49,584 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:49,585 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:49,585 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:49,614 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:50,083 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:50,083 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:50,083 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:50,088 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:50,089 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:50,089 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:50,089 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:50,089 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:50,090 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:50,094 - DEBUG - Starting frame 32 processing
+2025-12-23 23:15:50,094 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:50,099 - DEBUG - Received frame data of length: 224731 bytes
+2025-12-23 23:15:50,118 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:50,119 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:50,121 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:50,122 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:50,122 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:50,122 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:50,122 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:50,122 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:50,123 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:50,123 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:50,123 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:50,123 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:50,124 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:50,124 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:50,125 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:50,154 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:50,603 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:50,603 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:50,603 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:50,608 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:50,608 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:50,608 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:50,609 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:50,609 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:50,609 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:50,613 - DEBUG - Starting frame 33 processing
+2025-12-23 23:15:50,613 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:50,615 - DEBUG - Received frame data of length: 224731 bytes
+2025-12-23 23:15:50,632 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:50,632 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:50,634 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:50,634 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:50,635 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:50,635 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:50,635 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:50,635 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:50,635 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:50,636 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:50,636 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:50,636 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:50,636 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:50,637 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:50,637 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:50,667 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:51,121 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:51,121 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:51,122 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:51,126 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:51,126 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:51,127 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:51,127 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:51,127 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:51,127 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:51,131 - DEBUG - Starting frame 34 processing
+2025-12-23 23:15:51,131 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:51,135 - DEBUG - Received frame data of length: 224731 bytes
+2025-12-23 23:15:51,153 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:51,153 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:51,156 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:51,156 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:51,157 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:51,157 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:51,157 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:51,157 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:51,157 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:51,158 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:51,158 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:51,158 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:51,159 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:51,160 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:51,160 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:51,197 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:51,677 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:51,678 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:51,678 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:51,683 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:51,683 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:51,683 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:51,684 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:51,684 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:51,684 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:51,689 - DEBUG - Starting frame 35 processing
+2025-12-23 23:15:51,689 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:51,691 - DEBUG - Received frame data of length: 224935 bytes
+2025-12-23 23:15:51,708 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:51,709 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:51,712 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:51,712 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:51,712 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:51,713 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:51,713 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:51,713 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:51,713 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:51,713 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:51,714 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:51,714 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:51,714 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:51,715 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:51,715 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:51,744 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:52,235 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:52,235 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:52,236 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:52,241 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:52,241 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:52,241 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:52,242 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:52,242 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:52,242 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:52,246 - DEBUG - Starting frame 36 processing
+2025-12-23 23:15:52,246 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:52,250 - DEBUG - Received frame data of length: 224935 bytes
+2025-12-23 23:15:52,267 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:52,267 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:52,269 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:52,269 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:52,269 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:52,269 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:52,269 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:52,269 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:52,269 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:52,269 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:52,269 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:52,269 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:52,269 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:52,269 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:52,269 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:52,306 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:52,797 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:52,797 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:52,797 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:52,803 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:52,803 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:52,803 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:52,804 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:52,804 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:52,804 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:52,814 - DEBUG - Starting frame 37 processing
+2025-12-23 23:15:52,814 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:52,819 - DEBUG - Received frame data of length: 224935 bytes
+2025-12-23 23:15:52,840 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:52,840 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:52,843 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:52,843 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:52,843 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:52,844 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:52,844 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:52,844 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:52,844 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:52,845 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:52,845 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:52,845 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:52,845 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:52,846 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:52,847 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:52,888 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:53,364 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:53,364 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:53,366 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:53,370 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:53,371 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:53,371 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:53,371 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:53,371 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:53,372 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:53,375 - DEBUG - Starting frame 38 processing
+2025-12-23 23:15:53,375 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:53,379 - DEBUG - Received frame data of length: 224924 bytes
+2025-12-23 23:15:53,397 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:53,397 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:53,399 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:53,400 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:53,400 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:53,400 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:53,400 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:53,400 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:53,401 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:53,401 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:53,401 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:53,401 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:53,402 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:53,402 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:53,403 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:53,431 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:53,871 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:53,871 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:53,871 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:53,877 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:53,877 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:53,878 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:53,878 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:53,878 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:53,879 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:53,882 - DEBUG - Starting frame 39 processing
+2025-12-23 23:15:53,883 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:53,884 - DEBUG - Received frame data of length: 224924 bytes
+2025-12-23 23:15:53,904 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:53,904 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:53,907 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:53,907 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:53,907 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:53,908 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:53,908 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:53,908 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:53,908 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:53,909 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:53,909 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:53,909 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:53,909 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:53,910 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:53,911 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:53,943 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:54,415 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:54,415 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:54,416 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:54,421 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:54,421 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:54,422 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:54,423 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:54,423 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:54,424 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:54,429 - DEBUG - Starting frame 40 processing
+2025-12-23 23:15:54,429 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:54,432 - DEBUG - Received frame data of length: 224924 bytes
+2025-12-23 23:15:54,450 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:54,451 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:54,453 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:54,453 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:54,453 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:54,454 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:54,454 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:54,454 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:54,454 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:54,455 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:54,455 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:54,455 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:54,455 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:54,456 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:54,456 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:54,486 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:54,946 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:54,947 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:54,947 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:54,952 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:54,952 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:54,952 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:54,953 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:54,953 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:54,953 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:54,957 - DEBUG - Starting frame 41 processing
+2025-12-23 23:15:54,957 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:54,960 - DEBUG - Received frame data of length: 224924 bytes
+2025-12-23 23:15:54,978 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:54,979 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:54,981 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:54,981 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:54,982 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:54,982 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:54,982 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:54,982 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:54,983 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:54,983 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:54,983 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:54,983 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:54,984 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:54,985 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:54,985 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:55,015 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:55,439 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:55,439 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:55,439 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:55,444 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:55,444 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:55,444 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:55,444 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:55,445 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:55,445 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:55,448 - DEBUG - Starting frame 42 processing
+2025-12-23 23:15:55,449 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:55,452 - DEBUG - Received frame data of length: 224924 bytes
+2025-12-23 23:15:55,475 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:55,475 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:55,477 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:55,478 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:55,478 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:55,478 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:55,478 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:55,478 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:55,479 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:55,479 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:55,479 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:55,479 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:55,479 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:55,480 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:55,481 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:55,510 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:55,980 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:55,980 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:55,981 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:55,985 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:55,986 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:55,986 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:55,988 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:55,988 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:55,988 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:55,994 - DEBUG - Starting frame 43 processing
+2025-12-23 23:15:55,994 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:55,996 - DEBUG - Received frame data of length: 226092 bytes
+2025-12-23 23:15:56,020 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:56,021 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:56,024 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:56,024 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:56,025 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:56,025 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:56,025 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:56,026 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:56,026 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:56,026 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:56,026 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:56,027 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:56,027 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:56,028 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:56,028 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:56,068 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:56,555 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:56,555 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:56,555 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:56,562 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:56,562 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:56,563 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:56,563 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:56,563 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:56,563 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:56,568 - DEBUG - Starting frame 44 processing
+2025-12-23 23:15:56,568 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:56,572 - DEBUG - Received frame data of length: 226092 bytes
+2025-12-23 23:15:56,591 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:56,591 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:56,593 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:56,593 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:56,594 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:56,594 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:56,594 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:56,594 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:56,594 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:56,595 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:56,595 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:56,595 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:56,595 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:56,596 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:56,596 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:56,630 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:57,075 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:57,075 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:57,076 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:57,081 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:57,081 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:57,081 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:57,082 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:57,082 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:57,082 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:57,086 - DEBUG - Starting frame 45 processing
+2025-12-23 23:15:57,087 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:57,089 - DEBUG - Received frame data of length: 226311 bytes
+2025-12-23 23:15:57,108 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:57,109 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:57,112 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:57,112 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:57,112 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:57,113 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:57,113 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:57,113 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:57,113 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:57,114 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:57,114 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:57,114 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:57,114 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:57,115 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:57,115 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:57,146 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:57,609 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:57,609 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:57,609 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:57,614 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:57,614 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:57,615 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:57,615 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:57,615 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:57,615 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:57,620 - DEBUG - Starting frame 46 processing
+2025-12-23 23:15:57,620 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:57,623 - DEBUG - Received frame data of length: 226311 bytes
+2025-12-23 23:15:57,642 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:57,642 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:57,645 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:57,645 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:57,645 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:57,646 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:57,646 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:57,646 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:57,646 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:57,647 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:57,647 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:57,647 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:57,647 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:57,648 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:57,648 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:57,670 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:58,132 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:58,132 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:58,132 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:58,137 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:58,137 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:58,138 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:58,138 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:58,138 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:58,138 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:58,142 - DEBUG - Starting frame 47 processing
+2025-12-23 23:15:58,143 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:58,145 - DEBUG - Received frame data of length: 226311 bytes
+2025-12-23 23:15:58,165 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:58,165 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:58,168 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:58,169 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:58,169 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:58,169 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:58,169 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:58,170 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:58,170 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:58,171 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:58,171 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:58,171 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:58,172 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:58,173 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:58,173 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:58,216 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:58,671 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:58,671 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:58,671 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:58,680 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:58,681 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:58,681 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:58,681 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:58,682 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:58,682 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:58,685 - DEBUG - Starting frame 48 processing
+2025-12-23 23:15:58,686 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:58,689 - DEBUG - Received frame data of length: 226311 bytes
+2025-12-23 23:15:58,712 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:58,712 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:58,715 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:58,715 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:58,715 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:58,715 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:58,716 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:58,716 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:58,716 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:58,716 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:58,716 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:58,717 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:58,717 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:58,718 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:58,718 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:58,748 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:59,234 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:59,234 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:59,235 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:59,241 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:59,242 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:59,242 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:59,242 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:59,243 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:59,243 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:59,248 - DEBUG - Starting frame 49 processing
+2025-12-23 23:15:59,248 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:59,253 - DEBUG - Received frame data of length: 226311 bytes
+2025-12-23 23:15:59,271 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:59,271 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:59,274 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:59,274 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:59,274 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:59,274 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:59,274 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:59,275 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:59,275 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:59,275 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:59,275 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:59,276 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:59,276 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:59,276 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:59,277 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:59,306 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:15:59,764 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:15:59,764 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:15:59,764 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:15:59,772 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:15:59,772 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:15:59,772 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:15:59,773 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:15:59,773 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:15:59,773 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:15:59,776 - DEBUG - Starting frame 50 processing
+2025-12-23 23:15:59,777 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:15:59,779 - DEBUG - Received frame data of length: 226183 bytes
+2025-12-23 23:15:59,796 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:15:59,796 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:15:59,799 - DEBUG - Frame copied for face detection
+2025-12-23 23:15:59,799 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:15:59,799 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:15:59,800 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:15:59,800 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:15:59,800 - DEBUG - Using DNN face detection method
+2025-12-23 23:15:59,800 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:15:59,801 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:15:59,801 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:15:59,801 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:15:59,801 - DEBUG - Starting face detection on frame
+2025-12-23 23:15:59,802 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:15:59,803 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:15:59,832 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:00,287 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:16:00,287 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:16:00,287 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:16:00,291 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:16:00,291 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:16:00,291 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:16:00,291 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:16:00,291 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:16:00,291 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:16:00,297 - DEBUG - Starting frame 51 processing
+2025-12-23 23:16:00,297 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:00,300 - DEBUG - Received frame data of length: 226183 bytes
+2025-12-23 23:16:00,317 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:00,317 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:00,319 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:00,320 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:00,320 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:00,320 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:00,320 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:00,320 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:00,321 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:00,321 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:00,321 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:00,321 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:00,322 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:00,322 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:00,323 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:00,353 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:00,840 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:16:00,841 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:16:00,841 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:16:00,846 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:16:00,846 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:16:00,846 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:16:00,846 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:16:00,847 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:16:00,847 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:16:00,852 - DEBUG - Starting frame 52 processing
+2025-12-23 23:16:00,853 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:00,858 - DEBUG - Received frame data of length: 226183 bytes
+2025-12-23 23:16:00,876 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:00,876 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:00,879 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:00,879 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:00,880 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:00,880 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:00,880 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:00,880 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:00,881 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:00,881 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:00,881 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:00,882 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:00,882 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:00,883 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:00,883 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:00,913 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:01,374 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:16:01,374 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:16:01,374 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:16:01,379 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:16:01,379 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:16:01,380 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:16:01,380 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:16:01,380 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:16:01,381 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:16:01,384 - DEBUG - Starting frame 53 processing
+2025-12-23 23:16:01,384 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:01,388 - DEBUG - Received frame data of length: 226183 bytes
+2025-12-23 23:16:01,405 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:01,405 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:01,408 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:01,408 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:01,408 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:01,408 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:01,408 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:01,409 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:01,409 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:01,409 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:01,409 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:01,409 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:01,410 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:01,410 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:01,411 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:01,440 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:01,931 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:16:01,932 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:16:01,932 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:16:01,938 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:16:01,938 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:16:01,938 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:16:01,939 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:16:01,939 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:16:01,939 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:16:01,946 - DEBUG - Starting frame 54 processing
+2025-12-23 23:16:01,946 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:01,949 - DEBUG - Received frame data of length: 226169 bytes
+2025-12-23 23:16:01,966 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:01,966 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:01,972 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:01,973 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:01,973 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:01,973 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:01,973 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:01,974 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:01,974 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:01,974 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:01,975 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:01,975 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:01,975 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:01,976 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:01,976 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:02,012 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:02,525 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:16:02,525 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:16:02,526 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:16:02,530 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:16:02,531 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:16:02,531 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:16:02,531 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:16:02,532 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:16:02,532 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:16:02,538 - DEBUG - Starting frame 55 processing
+2025-12-23 23:16:02,538 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:02,541 - DEBUG - Received frame data of length: 226169 bytes
+2025-12-23 23:16:02,559 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:02,559 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:02,561 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:02,561 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:02,562 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:02,562 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:02,562 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:02,562 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:02,563 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:02,563 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:02,563 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:02,563 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:02,563 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:02,564 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:02,564 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:02,599 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:03,054 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:16:03,054 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:16:03,054 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:16:03,059 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:16:03,059 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:16:03,060 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:16:03,060 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:16:03,060 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:16:03,061 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:16:03,070 - DEBUG - Starting frame 56 processing
+2025-12-23 23:16:03,071 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:03,074 - DEBUG - Received frame data of length: 226169 bytes
+2025-12-23 23:16:03,099 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:03,099 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:03,102 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:03,102 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:03,102 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:03,102 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:03,103 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:03,103 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:03,103 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:03,103 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:03,104 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:03,104 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:03,104 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:03,105 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:03,105 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:03,138 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:03,610 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:16:03,610 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:16:03,610 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:16:03,615 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:16:03,618 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:16:03,619 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:16:03,619 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:16:03,619 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:16:03,620 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:16:03,626 - DEBUG - Starting frame 57 processing
+2025-12-23 23:16:03,627 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:03,629 - DEBUG - Received frame data of length: 226124 bytes
+2025-12-23 23:16:03,651 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:03,651 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:03,654 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:03,654 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:03,655 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:03,655 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:03,655 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:03,655 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:03,656 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:03,656 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:03,656 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:03,657 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:03,657 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:03,658 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:03,658 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:03,694 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:04,189 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:16:04,190 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:16:04,190 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:16:04,198 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:16:04,198 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:16:04,198 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:16:04,199 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:16:04,199 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:16:04,199 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:16:04,209 - DEBUG - Starting frame 58 processing
+2025-12-23 23:16:04,210 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:04,216 - DEBUG - Received frame data of length: 226124 bytes
+2025-12-23 23:16:04,239 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:04,239 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:04,241 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:04,242 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:04,242 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:04,242 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:04,243 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:04,243 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:04,243 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:04,243 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:04,244 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:04,244 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:04,244 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:04,245 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:04,245 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:04,276 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:04,793 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:16:04,793 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:16:04,794 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:16:04,799 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:16:04,800 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:16:04,800 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:16:04,800 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:16:04,801 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:16:04,801 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:16:04,807 - DEBUG - Starting frame 59 processing
+2025-12-23 23:16:04,807 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:04,812 - DEBUG - Received frame data of length: 226124 bytes
+2025-12-23 23:16:04,834 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:04,835 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:04,837 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:04,837 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:04,838 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:04,838 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:04,838 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:04,838 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:04,838 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:04,839 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:04,839 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:04,839 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:04,840 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:04,840 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:04,841 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:04,872 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:05,515 - INFO - Face detection completed - found 1 faces
+2025-12-23 23:16:05,515 - DEBUG - Detection confidence levels: minNeighbors=1:1 faces, minNeighbors=3:1 faces, minNeighbors=5:1 faces
+2025-12-23 23:16:05,515 - INFO - Face 1: position (432, 133), size 321x321, relative size: 6.7% of frame
+2025-12-23 23:16:05,525 - DEBUG - Face detection returned 1 faces
+2025-12-23 23:16:05,525 - INFO - Selected largest face: position (432, 133), size 321x321
+2025-12-23 23:16:05,526 - DEBUG - Face center in frame coordinates: (592, 293)
+2025-12-23 23:16:05,526 - INFO - Scaled to screen coordinates: (592, 394) with scale factors (1.00, 1.34)
+2025-12-23 23:16:05,526 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 592, 'y': 394}
+2025-12-23 23:16:05,527 - INFO - Face tracking: moved cursor to (592, 394)
+2025-12-23 23:16:05,537 - DEBUG - Starting frame 60 processing
+2025-12-23 23:16:05,537 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:05,544 - DEBUG - Received frame data of length: 228908 bytes
+2025-12-23 23:16:05,565 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:05,565 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:05,568 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:05,569 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:05,569 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:05,569 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:05,569 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:05,570 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:05,570 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:05,570 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:05,570 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:05,571 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:05,571 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:05,571 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:05,572 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:05,605 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:06,116 - INFO - Face detection completed - found 2 faces
+2025-12-23 23:16:06,116 - DEBUG - Detection confidence levels: minNeighbors=1:2 faces, minNeighbors=3:2 faces, minNeighbors=5:2 faces
+2025-12-23 23:16:06,116 - INFO - Face 1: position (264, 107), size 173x173, relative size: 1.9% of frame
+2025-12-23 23:16:06,117 - INFO - Face 2: position (589, 305), size 322x322, relative size: 6.7% of frame
+2025-12-23 23:16:06,126 - DEBUG - Face detection returned 2 faces
+2025-12-23 23:16:06,126 - INFO - Selected largest face: position (589, 305), size 322x322
+2025-12-23 23:16:06,126 - DEBUG - Face center in frame coordinates: (750, 466)
+2025-12-23 23:16:06,126 - INFO - Scaled to screen coordinates: (750, 626) with scale factors (1.00, 1.34)
+2025-12-23 23:16:06,127 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 750, 'y': 626}
+2025-12-23 23:16:06,127 - INFO - Face tracking: moved cursor to (750, 626)
+2025-12-23 23:16:06,131 - DEBUG - Starting frame 61 processing
+2025-12-23 23:16:06,132 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:06,134 - DEBUG - Received frame data of length: 228908 bytes
+2025-12-23 23:16:06,152 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:06,152 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:06,155 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:06,155 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:06,155 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:06,155 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:06,155 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:06,156 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:06,156 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:06,156 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:06,156 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:06,157 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:06,157 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:06,158 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:06,158 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:06,192 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:06,764 - INFO - Face detection completed - found 2 faces
+2025-12-23 23:16:06,764 - DEBUG - Detection confidence levels: minNeighbors=1:2 faces, minNeighbors=3:2 faces, minNeighbors=5:2 faces
+2025-12-23 23:16:06,764 - INFO - Face 1: position (589, 305), size 322x322, relative size: 6.7% of frame
+2025-12-23 23:16:06,764 - INFO - Face 2: position (264, 107), size 173x173, relative size: 1.9% of frame
+2025-12-23 23:16:06,772 - DEBUG - Face detection returned 2 faces
+2025-12-23 23:16:06,773 - INFO - Selected largest face: position (589, 305), size 322x322
+2025-12-23 23:16:06,773 - DEBUG - Face center in frame coordinates: (750, 466)
+2025-12-23 23:16:06,773 - INFO - Scaled to screen coordinates: (750, 626) with scale factors (1.00, 1.34)
+2025-12-23 23:16:06,774 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 750, 'y': 626}
+2025-12-23 23:16:06,774 - INFO - Face tracking: moved cursor to (750, 626)
+2025-12-23 23:16:06,778 - DEBUG - Starting frame 62 processing
+2025-12-23 23:16:06,778 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:06,781 - DEBUG - Received frame data of length: 228910 bytes
+2025-12-23 23:16:06,802 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:06,802 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:06,805 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:06,805 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:06,805 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:06,805 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:06,806 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:06,806 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:06,806 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:06,806 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:06,807 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:06,807 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:06,807 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:06,808 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:06,808 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:06,839 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:07,347 - INFO - Face detection completed - found 2 faces
+2025-12-23 23:16:07,348 - DEBUG - Detection confidence levels: minNeighbors=1:2 faces, minNeighbors=3:2 faces, minNeighbors=5:2 faces
+2025-12-23 23:16:07,348 - INFO - Face 1: position (264, 107), size 173x173, relative size: 1.9% of frame
+2025-12-23 23:16:07,348 - INFO - Face 2: position (589, 305), size 322x322, relative size: 6.7% of frame
+2025-12-23 23:16:07,354 - DEBUG - Face detection returned 2 faces
+2025-12-23 23:16:07,354 - INFO - Selected largest face: position (589, 305), size 322x322
+2025-12-23 23:16:07,354 - DEBUG - Face center in frame coordinates: (750, 466)
+2025-12-23 23:16:07,355 - INFO - Scaled to screen coordinates: (750, 626) with scale factors (1.00, 1.34)
+2025-12-23 23:16:07,355 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 750, 'y': 626}
+2025-12-23 23:16:07,355 - INFO - Face tracking: moved cursor to (750, 626)
+2025-12-23 23:16:07,360 - DEBUG - Starting frame 63 processing
+2025-12-23 23:16:07,360 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:07,364 - DEBUG - Received frame data of length: 228910 bytes
+2025-12-23 23:16:07,382 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:07,382 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:07,385 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:07,385 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:07,386 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:07,386 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:07,386 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:07,386 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:07,386 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:07,387 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:07,387 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:07,387 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:07,387 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:07,388 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:07,388 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:07,426 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:07,892 - INFO - Face detection completed - found 2 faces
+2025-12-23 23:16:07,893 - DEBUG - Detection confidence levels: minNeighbors=1:2 faces, minNeighbors=3:2 faces, minNeighbors=5:2 faces
+2025-12-23 23:16:07,893 - INFO - Face 1: position (264, 107), size 173x173, relative size: 1.9% of frame
+2025-12-23 23:16:07,893 - INFO - Face 2: position (589, 305), size 322x322, relative size: 6.7% of frame
+2025-12-23 23:16:07,898 - DEBUG - Face detection returned 2 faces
+2025-12-23 23:16:07,898 - INFO - Selected largest face: position (589, 305), size 322x322
+2025-12-23 23:16:07,898 - DEBUG - Face center in frame coordinates: (750, 466)
+2025-12-23 23:16:07,898 - INFO - Scaled to screen coordinates: (750, 626) with scale factors (1.00, 1.34)
+2025-12-23 23:16:07,899 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 750, 'y': 626}
+2025-12-23 23:16:07,899 - INFO - Face tracking: moved cursor to (750, 626)
+2025-12-23 23:16:07,905 - DEBUG - Starting frame 64 processing
+2025-12-23 23:16:07,905 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:07,908 - DEBUG - Received frame data of length: 228910 bytes
+2025-12-23 23:16:07,927 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:07,927 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:07,930 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:07,930 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:07,930 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:07,930 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:07,930 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:07,931 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:07,931 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:07,931 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:07,931 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:07,931 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:07,932 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:07,933 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:07,933 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:07,964 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:08,460 - INFO - Face detection completed - found 2 faces
+2025-12-23 23:16:08,460 - DEBUG - Detection confidence levels: minNeighbors=1:2 faces, minNeighbors=3:2 faces, minNeighbors=5:2 faces
+2025-12-23 23:16:08,460 - INFO - Face 1: position (264, 107), size 173x173, relative size: 1.9% of frame
+2025-12-23 23:16:08,460 - INFO - Face 2: position (589, 305), size 322x322, relative size: 6.7% of frame
+2025-12-23 23:16:08,465 - DEBUG - Face detection returned 2 faces
+2025-12-23 23:16:08,465 - INFO - Selected largest face: position (589, 305), size 322x322
+2025-12-23 23:16:08,465 - DEBUG - Face center in frame coordinates: (750, 466)
+2025-12-23 23:16:08,465 - INFO - Scaled to screen coordinates: (750, 626) with scale factors (1.00, 1.34)
+2025-12-23 23:16:08,465 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 750, 'y': 626}
+2025-12-23 23:16:08,465 - INFO - Face tracking: moved cursor to (750, 626)
+2025-12-23 23:16:08,470 - DEBUG - Starting frame 65 processing
+2025-12-23 23:16:08,470 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:08,472 - DEBUG - Received frame data of length: 228991 bytes
+2025-12-23 23:16:08,493 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:08,494 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:08,496 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:08,496 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:08,497 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:08,497 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:08,497 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:08,497 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:08,498 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:08,498 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:08,498 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:08,498 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:08,498 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:08,499 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:08,499 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:08,539 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:09,039 - INFO - Face detection completed - found 2 faces
+2025-12-23 23:16:09,043 - DEBUG - Detection confidence levels: minNeighbors=1:2 faces, minNeighbors=3:2 faces, minNeighbors=5:2 faces
+2025-12-23 23:16:09,043 - INFO - Face 1: position (264, 107), size 173x173, relative size: 1.9% of frame
+2025-12-23 23:16:09,043 - INFO - Face 2: position (589, 305), size 322x322, relative size: 6.7% of frame
+2025-12-23 23:16:09,048 - DEBUG - Face detection returned 2 faces
+2025-12-23 23:16:09,048 - INFO - Selected largest face: position (589, 305), size 322x322
+2025-12-23 23:16:09,049 - DEBUG - Face center in frame coordinates: (750, 466)
+2025-12-23 23:16:09,049 - INFO - Scaled to screen coordinates: (750, 626) with scale factors (1.00, 1.34)
+2025-12-23 23:16:09,049 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 750, 'y': 626}
+2025-12-23 23:16:09,049 - INFO - Face tracking: moved cursor to (750, 626)
+2025-12-23 23:16:09,055 - DEBUG - Starting frame 66 processing
+2025-12-23 23:16:09,055 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:09,059 - DEBUG - Received frame data of length: 228991 bytes
+2025-12-23 23:16:09,077 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:09,078 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:09,080 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:09,080 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:09,080 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:09,081 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:09,081 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:09,081 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:09,081 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:09,082 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:09,082 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:09,082 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:09,082 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:09,083 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:09,083 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:09,114 - DEBUG - Face cascade classifier loaded successfully
+2025-12-23 23:16:09,608 - INFO - Face detection completed - found 2 faces
+2025-12-23 23:16:09,609 - DEBUG - Detection confidence levels: minNeighbors=1:2 faces, minNeighbors=3:2 faces, minNeighbors=5:2 faces
+2025-12-23 23:16:09,609 - INFO - Face 1: position (264, 107), size 173x173, relative size: 1.9% of frame
+2025-12-23 23:16:09,609 - INFO - Face 2: position (589, 305), size 322x322, relative size: 6.7% of frame
+2025-12-23 23:16:09,614 - DEBUG - Face detection returned 2 faces
+2025-12-23 23:16:09,614 - INFO - Selected largest face: position (589, 305), size 322x322
+2025-12-23 23:16:09,614 - DEBUG - Face center in frame coordinates: (750, 466)
+2025-12-23 23:16:09,615 - INFO - Scaled to screen coordinates: (750, 626) with scale factors (1.00, 1.34)
+2025-12-23 23:16:09,615 - DEBUG - Sending face tracking mouse command: {'type': 'move', 'x': 750, 'y': 626}
+2025-12-23 23:16:09,615 - INFO - Face tracking: moved cursor to (750, 626)
+2025-12-23 23:16:09,618 - DEBUG - Starting frame 67 processing
+2025-12-23 23:16:09,618 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:16:09,620 - DEBUG - Received frame data of length: 228991 bytes
+2025-12-23 23:16:09,637 - DEBUG - Decoded frame successfully, shape: (803, 1920, 3)
+2025-12-23 23:16:09,638 - INFO - Processing frame (803, 1920, 3) - face tracking enabled: True
+2025-12-23 23:16:09,640 - DEBUG - Frame copied for face detection
+2025-12-23 23:16:09,640 - DEBUG - Frame processing: enable_face_tracking=True, mouse_socket=True
+2025-12-23 23:16:09,640 - INFO - Face tracking enabled, processing frame for faces using dnn method
+2025-12-23 23:16:09,640 - DEBUG - Frame shape for detection: (803, 1920, 3)
+2025-12-23 23:16:09,641 - DEBUG - detect_faces called with method='dnn', threshold=0.8
+2025-12-23 23:16:09,641 - DEBUG - Using DNN face detection method
+2025-12-23 23:16:09,642 - DEBUG - DNN face detection starting with confidence threshold 0.8
+2025-12-23 23:16:09,642 - WARNING - DNN model files not found, falling back to Haar cascade
+2025-12-23 23:16:09,642 - DEBUG - detect_faces called with method='haar', threshold=0.5
+2025-12-23 23:16:09,643 - DEBUG - Using Haar cascade face detection method
+2025-12-23 23:16:09,643 - DEBUG - Starting face detection on frame
+2025-12-23 23:16:09,643 - DEBUG - Converted frame to grayscale, shape: (803, 1920)
+2025-12-23 23:16:09,643 - DEBUG - Face cascade path: C:\Users\nhhor\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\cv2\data\haarcascade_frontalface_default.xml
+2025-12-23 23:16:09,676 - DEBUG - Face cascade classifier loaded successfully
