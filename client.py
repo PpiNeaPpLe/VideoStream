@@ -6,6 +6,45 @@ import json
 import threading
 import argparse
 import time
+import os
+
+def detect_faces(frame, scale_factor=1.1, min_neighbors=5, min_size=(30, 30)):
+    """Detect faces in a frame using Haar cascades"""
+    # Convert to grayscale for face detection
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    # Load the face cascade classifier
+    face_cascade_path = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
+
+    # Check if cascade file exists
+    if not os.path.exists(face_cascade_path):
+        print(f"Warning: Haar cascade file not found at {face_cascade_path}")
+        return []
+
+    face_cascade = cv2.CascadeClassifier(face_cascade_path)
+
+    # Detect faces
+    faces = face_cascade.detectMultiScale(
+        gray,
+        scaleFactor=scale_factor,
+        minNeighbors=min_neighbors,
+        minSize=min_size,
+        flags=cv2.CASCADE_SCALE_IMAGE
+    )
+
+    return faces
+
+def draw_face_rectangles(frame, faces):
+    """Draw rectangles around detected faces for visualization"""
+    for (x, y, w, h) in faces:
+        # Draw rectangle around face
+        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        # Draw center point
+        center_x = x + w//2
+        center_y = y + h//2
+        cv2.circle(frame, (center_x, center_y), 5, (0, 0, 255), -1)
+
+    return frame
 
 def mouse_callback(event, x, y, flags, param):
     """Handle mouse events from OpenCV window"""
@@ -75,7 +114,7 @@ def mouse_callback(event, x, y, flags, param):
     except Exception as e:
         print(f"Mouse callback error: {e}")
 
-def receive_stream(host, port=8080, mouse_port=8081):
+def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False):
     """Receive and display video stream from server with mouse control"""
     # Video stream socket
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -127,6 +166,45 @@ def receive_stream(host, port=8080, mouse_port=8081):
 
             if frame is not None:
                 # Get window info for coordinate scaling
+                original_frame = frame.copy()  # Keep original for face detection
+
+                # Perform face detection if enabled
+                if enable_face_tracking and mouse_socket:
+                    faces = detect_faces(original_frame)
+
+                    if len(faces) > 0:
+                        # Use the largest face (or first face if multiple)
+                        largest_face = max(faces, key=lambda f: f[2] * f[3])
+                        face_x, face_y, face_w, face_h = largest_face
+
+                        # Calculate center of face
+                        face_center_x = face_x + face_w // 2
+                        face_center_y = face_y + face_h // 2
+
+                        # Scale coordinates to original screen size
+                        scale_x = 1920 / frame.shape[1]  # Assuming server streams at 1920x1080
+                        scale_y = 1080 / frame.shape[0]
+
+                        screen_x = int(face_center_x * scale_x)
+                        screen_y = int(face_center_y * scale_y)
+
+                        # Send mouse move command to face position
+                        command = {
+                            'type': 'move',
+                            'x': screen_x,
+                            'y': screen_y
+                        }
+
+                        try:
+                            message = json.dumps(command) + '\n'
+                            mouse_socket.sendall(message.encode('utf-8'))
+                            print(f"Face detected - moved cursor to ({screen_x}, {screen_y})")
+                        except Exception as e:
+                            print(f"Failed to send face tracking command: {e}")
+
+                    # Draw face rectangles for visualization
+                    frame = draw_face_rectangles(frame, faces)
+
                 cv2.imshow(window_name, frame)
 
                 # Set up mouse callback only once when window is first shown
@@ -142,6 +220,8 @@ def receive_stream(host, port=8080, mouse_port=8081):
                     cv2.setMouseCallback(window_name, mouse_callback, (mouse_socket, window_info))
                     mouse_callback_set = True
                     print("Mouse callback set up for window")
+                    if enable_face_tracking:
+                        print("Face tracking enabled - cursor will follow detected faces")
 
                 # Press 'q' to quit
                 if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -206,10 +286,13 @@ if __name__ == "__main__":
                        help='Mouse control port (default: 8081)')
     parser.add_argument('--test', action='store_true',
                        help='Run mouse control test with circular movements')
+    parser.add_argument('--face-tracking', action='store_true',
+                       help='Enable automatic face tracking - cursor follows detected faces')
 
     args = parser.parse_args()
 
     if args.test:
         test_mouse_control(args.host, args.mouse_port)
     else:
-        receive_stream(args.host, port=args.port, mouse_port=args.mouse_port)
+        receive_stream(args.host, port=args.port, mouse_port=args.mouse_port,
+                      enable_face_tracking=args.face_tracking)
