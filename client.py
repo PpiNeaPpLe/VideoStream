@@ -245,6 +245,7 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False,
     data = b''
     window_name = 'Display 1 Stream'
     mouse_callback_set = False  # Track if mouse callback has been set
+    frame_counter = 0  # For frame skipping in face detection
 
     try:
         frame_count = 0
@@ -288,10 +289,13 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False,
                 original_frame = frame.copy()  # Keep original for face detection
                 logger.debug("Frame copied for face detection")
 
-                # Perform face detection if enabled
+                # Perform face detection if enabled (skip frames for performance)
                 faces = []  # Initialize faces list
-                logger.debug(f"Frame processing: enable_face_tracking={enable_face_tracking}, mouse_socket={mouse_socket is not None}")
-                if enable_face_tracking and mouse_socket:
+                frame_counter += 1
+                should_detect_faces = enable_face_tracking and mouse_socket and (frame_counter % 3 == 0)  # Process every 3rd frame
+
+                logger.debug(f"Frame processing: enable_face_tracking={enable_face_tracking}, mouse_socket={mouse_socket is not None}, frame_counter={frame_counter}, should_detect={should_detect_faces}")
+                if should_detect_faces:
                     logger.info(f"Face tracking enabled, processing frame for faces using {face_detection_method} method")
                     logger.debug(f"Frame shape for detection: {original_frame.shape}")
                     faces = detect_faces(original_frame, method=face_detection_method,
@@ -432,7 +436,7 @@ if __name__ == "__main__":
     parser.add_argument('--face-tracking', action='store_true',
                        help='Enable automatic face tracking - cursor follows detected faces')
     parser.add_argument('--face-detection-method', choices=['haar', 'dnn'],
-                       default='haar', help='Face detection method: haar (fast) or dnn (accurate with confidence scores)')
+                       default='haar', help='Face detection method: haar (fast, recommended) or dnn (accurate but slower)')
     parser.add_argument('--face-confidence-threshold', type=float, default=0.5,
                        help='Minimum confidence threshold for DNN face detection (0.0-1.0)')
     parser.add_argument('--log-level', choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'],

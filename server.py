@@ -14,10 +14,10 @@ app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Performance configuration - adjust these for better performance
-TARGET_WIDTH = 1920   # Target width (will scale proportionally)
-TARGET_HEIGHT = 1080  # Target height (will scale proportionally)
-JPEG_QUALITY = 90     # JPEG quality (higher = better quality but slower)
-TARGET_FPS = 45       # Target frame rate
+TARGET_WIDTH = 1280   # Target width (will scale proportionally) - reduced for better performance
+TARGET_HEIGHT = 720   # Target height (will scale proportionally) - reduced for better performance
+JPEG_QUALITY = 70     # JPEG quality (higher = better quality but slower) - reduced for speed
+TARGET_FPS = 30       # Target frame rate - reduced for better performance
 
 class ScreenStreamer:
     def __init__(self):
@@ -130,8 +130,8 @@ class VideoStreamer:
                 # Send frame data
                 client_socket.sendall(frame_data)
 
-                # Control frame rate (target ~30 FPS)
-                time.sleep(1/30)
+                # Control frame rate (target ~20 FPS for better performance)
+                time.sleep(1/20)
 
         except Exception as e:
             print(f"Video client error: {e}")
