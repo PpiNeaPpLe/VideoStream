@@ -12,7 +12,62 @@ import logging
 # Set up logging (will be configured based on command line args)
 logger = logging.getLogger(__name__)
 
-def detect_faces(frame, scale_factor=1.1, min_neighbors=5, min_size=(30, 30)):
+def detect_faces_dnn(frame, confidence_threshold=0.5):
+    """Detect faces using DNN model with actual confidence scores"""
+    logger.debug(f"DNN face detection starting with confidence threshold {confidence_threshold}")
+    try:
+        # Load the DNN model
+        model_file = "res10_300x300_ssd_iter_140000_fp16.caffemodel"
+        config_file = "deploy.prototxt"
+
+        # Check if model files exist, if not use Haar cascade fallback
+        if not (os.path.exists(model_file) and os.path.exists(config_file)):
+            logger.warning("DNN model files not found, falling back to Haar cascade")
+            return detect_faces(frame)
+
+        net = cv2.dnn.readNetFromCaffe(config_file, model_file)
+
+        # Prepare input
+        h, w = frame.shape[:2]
+        blob = cv2.dnn.blobFromImage(frame, 1.0, (300, 300), (104.0, 177.0, 123.0))
+        net.setInput(blob)
+
+        # Detect faces
+        detections = net.forward()
+
+        faces = []
+        for i in range(detections.shape[2]):
+            confidence = detections[0, 0, i, 2]
+
+            if confidence > confidence_threshold:
+                box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
+                x, y, x2, y2 = box.astype(int)
+
+                # Convert to (x, y, w, h) format
+                faces.append((x, y, x2-x, y2-y, confidence))
+
+        logger.info(f"DNN face detection - found {len(faces)} faces above {confidence_threshold} confidence")
+        for i, (x, y, w, h, conf) in enumerate(faces):
+            logger.info(f"Face {i+1}: position ({x}, {y}), size {w}x{h}, confidence: {conf:.3f}")
+
+        # Return just the bounding boxes for compatibility
+        return [(x, y, w, h) for x, y, w, h, conf in faces]
+
+    except Exception as e:
+        logger.error(f"DNN face detection failed: {e}, falling back to Haar cascade")
+        return detect_faces_haar(frame)
+
+def detect_faces(frame, method='haar', confidence_threshold=0.5, scale_factor=1.1, min_neighbors=5, min_size=(30, 30)):
+    """Detect faces using specified method"""
+    logger.debug(f"detect_faces called with method='{method}', threshold={confidence_threshold}")
+    if method == 'dnn':
+        logger.debug("Using DNN face detection method")
+        return detect_faces_dnn(frame, confidence_threshold)
+    else:
+        logger.debug("Using Haar cascade face detection method")
+        return detect_faces_haar(frame, scale_factor, min_neighbors, min_size)
+
+def detect_faces_haar(frame, scale_factor=1.1, min_neighbors=5, min_size=(30, 30)):
     """Detect faces in a frame using Haar cascades"""
     logger.debug("Starting face detection on frame")
 
@@ -36,7 +91,19 @@ def detect_faces(frame, scale_factor=1.1, min_neighbors=5, min_size=(30, 30)):
 
     logger.debug("Face cascade classifier loaded successfully")
 
-    # Detect faces
+    # Try different minNeighbors values for confidence-like information
+    confidence_levels = []
+    for min_n in [1, 3, 5]:  # Lower = more detections, higher = more confident
+        temp_faces = face_cascade.detectMultiScale(
+            gray,
+            scaleFactor=scale_factor,
+            minNeighbors=min_n,
+            minSize=min_size,
+            flags=cv2.CASCADE_SCALE_IMAGE
+        )
+        confidence_levels.append((min_n, len(temp_faces)))
+
+    # Detect faces with the configured threshold
     faces = face_cascade.detectMultiScale(
         gray,
         scaleFactor=scale_factor,
@@ -46,9 +113,16 @@ def detect_faces(frame, scale_factor=1.1, min_neighbors=5, min_size=(30, 30)):
     )
 
     logger.info(f"Face detection completed - found {len(faces)} faces")
+    logger.debug(f"Detection confidence levels: minNeighbors=1:{confidence_levels[0][1]} faces, minNeighbors=3:{confidence_levels[1][1]} faces, minNeighbors=5:{confidence_levels[2][1]} faces")
+
     if len(faces) > 0:
         for i, (x, y, w, h) in enumerate(faces):
-            logger.info(f"Face {i+1}: position ({x}, {y}), size {w}x{h}")
+            # Calculate confidence proxy based on face size and detection strength
+            face_area = w * h
+            frame_area = gray.shape[0] * gray.shape[1]
+            relative_size = face_area / frame_area * 100
+
+            logger.info(f"Face {i+1}: position ({x}, {y}), size {w}x{h}, relative size: {relative_size:.1f}% of frame")
 
     return faces
 
@@ -132,7 +206,8 @@ def mouse_callback(event, x, y, flags, param):
     except Exception as e:
         print(f"Mouse callback error: {e}")
 
-def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False):
+def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False,
+                  face_detection_method='haar', face_confidence_threshold=0.5):
     """Receive and display video stream from server with mouse control"""
     logger.info(f"Starting video stream client - Host: {host}, Video Port: {port}, Mouse Port: {mouse_port}, Face Tracking: {enable_face_tracking}")
 
@@ -158,6 +233,7 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False)
     logger.info(f"Connecting to video stream at {host}:{port}...")
     try:
         client_socket.connect((host, port))
+        client_socket.settimeout(5.0)  # 5 second timeout for receive operations
         logger.info("Video stream connected! Receiving stream...")
     except Exception as e:
         logger.error(f"Failed to connect to video stream: {e}")
@@ -171,10 +247,24 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False)
     mouse_callback_set = False  # Track if mouse callback has been set
 
     try:
+        frame_count = 0
         while True:
+            frame_count += 1
+            logger.debug(f"Starting frame {frame_count} processing")
             # Receive frame size
+            logger.debug(f"Waiting for frame size data ({payload_size} bytes needed)")
             while len(data) < payload_size:
-                data += client_socket.recv(4096)
+                logger.debug(f"Received {len(data)} bytes so far, waiting for {payload_size - len(data)} more")
+                try:
+                    chunk = client_socket.recv(4096)
+                    if not chunk:
+                        logger.error("Server closed connection while waiting for frame size")
+                        return
+                    data += chunk
+                    logger.debug(f"Received chunk of {len(chunk)} bytes, total now {len(data)}")
+                except socket.timeout:
+                    logger.error("Timeout waiting for frame size data")
+                    return
 
             packed_msg_size = data[:payload_size]
             data = data[payload_size:]
@@ -188,61 +278,73 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False)
             data = data[msg_size:]
 
             # Decode frame
+            logger.debug(f"Received frame data of length: {len(frame_data)} bytes")
             frame = cv2.imdecode(np.frombuffer(frame_data, dtype=np.uint8), cv2.IMREAD_COLOR)
 
             if frame is not None:
                 logger.debug(f"Decoded frame successfully, shape: {frame.shape}")
+                logger.info(f"Processing frame {frame.shape} - face tracking enabled: {enable_face_tracking}")
                 # Get window info for coordinate scaling
                 original_frame = frame.copy()  # Keep original for face detection
+                logger.debug("Frame copied for face detection")
 
                 # Perform face detection if enabled
+                faces = []  # Initialize faces list
+                logger.debug(f"Frame processing: enable_face_tracking={enable_face_tracking}, mouse_socket={mouse_socket is not None}")
                 if enable_face_tracking and mouse_socket:
-                    logger.debug("Face tracking enabled, processing frame for faces")
-                    faces = detect_faces(original_frame)
+                    logger.info(f"Face tracking enabled, processing frame for faces using {face_detection_method} method")
+                    logger.debug(f"Frame shape for detection: {original_frame.shape}")
+                    faces = detect_faces(original_frame, method=face_detection_method,
+                                       confidence_threshold=face_confidence_threshold)
+                    logger.debug(f"Face detection returned {len(faces)} faces")
                 elif enable_face_tracking and mouse_socket is None:
                     logger.warning("Face tracking enabled but mouse socket is None - cannot send mouse commands")
                 elif not enable_face_tracking:
                     logger.debug("Face tracking disabled - skipping face detection")
+                else:
+                    logger.debug("Face tracking conditions not met")
 
-                    if len(faces) > 0:
-                        # Use the largest face (or first face if multiple)
-                        largest_face = max(faces, key=lambda f: f[2] * f[3])
-                        face_x, face_y, face_w, face_h = largest_face
+                # Process detected faces and move mouse cursor
+                if len(faces) > 0:
+                    # Use the largest face (or first face if multiple)
+                    largest_face = max(faces, key=lambda f: f[2] * f[3])
+                    face_x, face_y, face_w, face_h = largest_face
 
-                        logger.info(f"Selected largest face: position ({face_x}, {face_y}), size {face_w}x{face_h}")
+                    logger.info(f"Selected largest face: position ({face_x}, {face_y}), size {face_w}x{face_h}")
 
-                        # Calculate center of face
-                        face_center_x = face_x + face_w // 2
-                        face_center_y = face_y + face_h // 2
+                    # Calculate center of face
+                    face_center_x = face_x + face_w // 2
+                    face_center_y = face_y + face_h // 2
 
-                        logger.debug(f"Face center in frame coordinates: ({face_center_x}, {face_center_y})")
+                    logger.debug(f"Face center in frame coordinates: ({face_center_x}, {face_center_y})")
 
-                        # Scale coordinates to original screen size
-                        scale_x = 1920 / frame.shape[1]  # Assuming server streams at 1920x1080
-                        scale_y = 1080 / frame.shape[0]
+                    # Scale coordinates to original screen size
+                    scale_x = 1920 / frame.shape[1]  # Assuming server streams at 1920x1080
+                    scale_y = 1080 / frame.shape[0]
 
-                        screen_x = int(face_center_x * scale_x)
-                        screen_y = int(face_center_y * scale_y)
+                    screen_x = int(face_center_x * scale_x)
+                    screen_y = int(face_center_y * scale_y)
 
-                        logger.info(f"Scaled to screen coordinates: ({screen_x}, {screen_y}) with scale factors ({scale_x:.2f}, {scale_y:.2f})")
+                    logger.info(f"Scaled to screen coordinates: ({screen_x}, {screen_y}) with scale factors ({scale_x:.2f}, {scale_y:.2f})")
 
-                        # Send mouse move command to face position
-                        command = {
-                            'type': 'move',
-                            'x': screen_x,
-                            'y': screen_y
-                        }
+                    # Send mouse move command to face position
+                    command = {
+                        'type': 'move',
+                        'x': screen_x,
+                        'y': screen_y
+                    }
 
-                        logger.debug(f"Sending face tracking mouse command: {command}")
+                    logger.debug(f"Sending face tracking mouse command: {command}")
 
-                        try:
-                            message = json.dumps(command) + '\n'
-                            mouse_socket.sendall(message.encode('utf-8'))
-                            logger.info(f"Face tracking: moved cursor to ({screen_x}, {screen_y})")
-                        except Exception as e:
-                            logger.error(f"Failed to send face tracking command: {e}")
+                    try:
+                        message = json.dumps(command) + '\n'
+                        mouse_socket.sendall(message.encode('utf-8'))
+                        logger.info(f"Face tracking: moved cursor to ({screen_x}, {screen_y})")
+                    except Exception as e:
+                        logger.error(f"Failed to send face tracking command: {e}")
 
-                    # Draw face rectangles for visualization
+                # Draw face rectangles for visualization (only if faces were detected)
+                if len(faces) > 0:
                     frame = draw_face_rectangles(frame, faces)
 
                 cv2.imshow(window_name, frame)
@@ -329,6 +431,10 @@ if __name__ == "__main__":
                        help='Run mouse control test with circular movements')
     parser.add_argument('--face-tracking', action='store_true',
                        help='Enable automatic face tracking - cursor follows detected faces')
+    parser.add_argument('--face-detection-method', choices=['haar', 'dnn'],
+                       default='haar', help='Face detection method: haar (fast) or dnn (accurate with confidence scores)')
+    parser.add_argument('--face-confidence-threshold', type=float, default=0.5,
+                       help='Minimum confidence threshold for DNN face detection (0.0-1.0)')
     parser.add_argument('--log-level', choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'],
                        default='DEBUG', help='Set logging level (default: DEBUG)')
 
@@ -351,4 +457,6 @@ if __name__ == "__main__":
     else:
         logger.info("Starting video stream client")
         receive_stream(args.host, port=args.port, mouse_port=args.mouse_port,
-                      enable_face_tracking=args.face_tracking)
+                      enable_face_tracking=args.face_tracking,
+                      face_detection_method=args.face_detection_method,
+                      face_confidence_threshold=args.face_confidence_threshold)

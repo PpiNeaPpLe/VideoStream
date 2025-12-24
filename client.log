@@ -1,0 +1,11 @@
+2025-12-23 23:12:46,197 - INFO - Starting video stream client
+2025-12-23 23:12:46,198 - INFO - Starting video stream client - Host: 192.168.2.1, Video Port: 8080, Mouse Port: 8081, Face Tracking: True
+2025-12-23 23:12:46,198 - INFO - FACE TRACKING IS ENABLED - will detect faces and move cursor
+2025-12-23 23:12:46,198 - INFO - Connecting to mouse control server at 192.168.2.1:8081
+2025-12-23 23:12:46,200 - INFO - Mouse control connected successfully to 192.168.2.1:8081
+2025-12-23 23:12:46,200 - INFO - Connecting to video stream at 192.168.2.1:8080...
+2025-12-23 23:12:46,201 - INFO - Video stream connected! Receiving stream...
+2025-12-23 23:12:46,201 - DEBUG - Starting frame 1 processing
+2025-12-23 23:12:46,201 - DEBUG - Waiting for frame size data (4 bytes needed)
+2025-12-23 23:12:46,202 - DEBUG - Received 0 bytes so far, waiting for 4 more
+2025-12-23 23:12:51,204 - ERROR - Timeout waiting for frame size data
