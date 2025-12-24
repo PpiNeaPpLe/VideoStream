@@ -223,12 +223,47 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False,
 
     # Mouse control socket (only needed if not stream-only mode)
     mouse_socket = None
+    server_screen_width = 1920  # Default fallback
+    server_screen_height = 1080  # Default fallback
+
     if not stream_only:
         try:
             mouse_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             logger.info(f"Connecting to mouse control server at {host}:{mouse_port}")
             mouse_socket.connect((host, mouse_port))
+            mouse_socket.settimeout(5.0)  # 5 second timeout for receiving screen info
             logger.info(f"Mouse control connected successfully to {host}:{mouse_port}")
+
+            # Receive screen dimensions from server
+            try:
+                data = b''
+                while len(data) < 1024:  # Reasonable buffer size
+                    chunk = mouse_socket.recv(1024)
+                    if not chunk:
+                        break
+                    data += chunk
+                    if b'\n' in data:
+                        break
+
+                if data:
+                    message = data.split(b'\n', 1)[0]
+                    screen_info = json.loads(message.decode('utf-8'))
+                    if screen_info.get('type') == 'screen_info':
+                        server_screen_width = screen_info.get('width', 1920)
+                        server_screen_height = screen_info.get('height', 1080)
+                        logger.info(f"Received server screen dimensions: {server_screen_width}x{server_screen_height}")
+                    else:
+                        logger.warning(f"Expected screen_info message, got: {screen_info}")
+                else:
+                    logger.warning("No screen info received from server, using defaults")
+
+            except json.JSONDecodeError as e:
+                logger.error(f"Failed to parse screen info from server: {e}")
+            except socket.timeout:
+                logger.warning("Timeout waiting for screen info from server, using defaults")
+            finally:
+                mouse_socket.settimeout(None)  # Remove timeout for normal operation
+
         except Exception as e:
             logger.error(f"Mouse control connection failed: {e}")
             mouse_socket = None
@@ -378,8 +413,8 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False,
                         logger.debug(f"Face center in frame coordinates: ({face_center_x}, {face_center_y})")
 
                         # Scale coordinates to original screen size
-                        scale_x = 1920 / frame.shape[1]  # Assuming server streams at 1920x1080
-                        scale_y = 1080 / frame.shape[0]
+                        scale_x = server_screen_width / frame.shape[1]
+                        scale_y = server_screen_height / frame.shape[0]
 
                         screen_x = int(face_center_x * scale_x)
                         screen_y = int(face_center_y * scale_y)
@@ -411,8 +446,8 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False,
                 # Set up mouse callback only once when window is first shown (only if not stream-only)
                 if not stream_only and not mouse_callback_set:
                     window_info = {
-                        'original_width': 1920,  # Assuming server streams at 1920x1080
-                        'original_height': 1080,
+                        'original_width': server_screen_width,
+                        'original_height': server_screen_height,
                         'window_width': frame.shape[1],
                         'window_height': frame.shape[0]
                     }

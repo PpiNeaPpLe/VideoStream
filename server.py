@@ -205,6 +205,21 @@ class MouseController:
                     client_socket, addr = self.server_socket.accept()
                     print(f"Mouse control client connected from {addr}")
 
+                    # Send screen dimensions to client upon connection
+                    screen_info = {
+                        'type': 'screen_info',
+                        'width': self.screen_width,
+                        'height': self.screen_height
+                    }
+                    try:
+                        message = json.dumps(screen_info) + '\n'
+                        client_socket.sendall(message.encode('utf-8'))
+                        print(f"Sent screen dimensions {self.screen_width}x{self.screen_height} to client")
+                    except Exception as e:
+                        print(f"Failed to send screen dimensions to client: {e}")
+                        client_socket.close()
+                        continue
+
                     # Handle client connection
                     data = b''
                     while self.running:
