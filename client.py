@@ -4,6 +4,8 @@ import struct
 import numpy as np
 import json
 import threading
+import argparse
+import time
 
 def mouse_callback(event, x, y, flags, param):
     """Handle mouse events from OpenCV window"""
@@ -100,6 +102,8 @@ def receive_stream(host, port=8080, mouse_port=8081):
 
     payload_size = struct.calcsize('>L')
     data = b''
+    window_name = 'Display 1 Stream'
+    mouse_callback_set = False  # Track if mouse callback has been set
 
     try:
         while True:
@@ -123,19 +127,21 @@ def receive_stream(host, port=8080, mouse_port=8081):
 
             if frame is not None:
                 # Get window info for coordinate scaling
-                window_name = 'Display 1 Stream'
                 cv2.imshow(window_name, frame)
 
-                # Set up mouse callback if not already set
-                window_info = {
-                    'original_width': 1920,  # Assuming server streams at 1920x1080
-                    'original_height': 1080,
-                    'window_width': frame.shape[1],
-                    'window_height': frame.shape[0]
-                }
+                # Set up mouse callback only once when window is first shown
+                if not mouse_callback_set:
+                    window_info = {
+                        'original_width': 1920,  # Assuming server streams at 1920x1080
+                        'original_height': 1080,
+                        'window_width': frame.shape[1],
+                        'window_height': frame.shape[0]
+                    }
 
-                # Set mouse callback with mouse socket and window info
-                cv2.setMouseCallback(window_name, mouse_callback, (mouse_socket, window_info))
+                    # Set mouse callback with mouse socket and window info
+                    cv2.setMouseCallback(window_name, mouse_callback, (mouse_socket, window_info))
+                    mouse_callback_set = True
+                    print("Mouse callback set up for window")
 
                 # Press 'q' to quit
                 if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -152,13 +158,58 @@ def receive_stream(host, port=8080, mouse_port=8081):
         cv2.destroyAllWindows()
         print("Connection closed")
 
+def test_mouse_control(host, port=8081):
+    """Test mouse control by sending circular mouse movements"""
+    print("Testing mouse control with circular movements...")
+
+    try:
+        test_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        test_socket.connect((host, port))
+        print(f"Connected to mouse control server at {host}:{port}")
+
+        # Send circular mouse movements for testing
+        center_x, center_y = 960, 540  # Center of a typical 1920x1080 screen
+        radius = 200
+
+        for angle in range(0, 360, 10):  # Move in a circle
+            x = center_x + int(radius * np.cos(np.radians(angle)))
+            y = center_y + int(radius * np.sin(np.radians(angle)))
+
+            command = {
+                'type': 'move',
+                'x': x,
+                'y': y
+            }
+
+            try:
+                message = json.dumps(command) + '\n'
+                test_socket.sendall(message.encode('utf-8'))
+                print(f"Sent mouse move to ({x}, {y})")
+                time.sleep(0.1)  # Small delay between movements
+            except Exception as e:
+                print(f"Failed to send test command: {e}")
+                break
+
+        print("Test completed")
+        test_socket.close()
+
+    except Exception as e:
+        print(f"Test failed: {e}")
+
 if __name__ == "__main__":
-    # Replace with the IP address of the server PC
-    # You can find this by running: ipconfig in cmd and looking for your network adapter
-    SERVER_IP = "192.168.1.129"  # Your server's IP address
+    parser = argparse.ArgumentParser(description='Screen Stream Client with Mouse Control')
+    parser.add_argument('--host', default='192.168.1.129',
+                       help='Server IP address (default: 192.168.1.129)')
+    parser.add_argument('--port', type=int, default=8080,
+                       help='Video stream port (default: 8080)')
+    parser.add_argument('--mouse-port', type=int, default=8081,
+                       help='Mouse control port (default: 8081)')
+    parser.add_argument('--test', action='store_true',
+                       help='Run mouse control test with circular movements')
 
-    # Alternative: Uncomment the line below to auto-discover server IP
-    # import socket
-    # SERVER_IP = socket.gethostbyname(socket.gethostname())
+    args = parser.parse_args()
 
-    receive_stream(SERVER_IP, port=8080, mouse_port=8081)
+    if args.test:
+        test_mouse_control(args.host, args.mouse_port)
+    else:
+        receive_stream(args.host, port=args.port, mouse_port=args.mouse_port)
