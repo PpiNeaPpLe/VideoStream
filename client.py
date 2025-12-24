@@ -207,11 +207,13 @@ def mouse_callback(event, x, y, flags, param):
         print(f"Mouse callback error: {e}")
 
 def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False,
-                  face_detection_method='haar', face_confidence_threshold=0.5):
+                  face_detection_method='haar', face_confidence_threshold=0.5, stream_only=False):
     """Receive and display video stream from server with mouse control"""
-    logger.info(f"Starting video stream client - Host: {host}, Video Port: {port}, Mouse Port: {mouse_port}, Face Tracking: {enable_face_tracking}")
+    logger.info(f"Starting video stream client - Host: {host}, Video Port: {port}, Mouse Port: {mouse_port}, Face Tracking: {enable_face_tracking}, Stream Only: {stream_only}")
 
-    if enable_face_tracking:
+    if stream_only:
+        logger.info("STREAM ONLY MODE - displaying video stream without processing")
+    elif enable_face_tracking:
         logger.info("FACE TRACKING IS ENABLED - will detect faces and move cursor")
     else:
         logger.info("Face tracking is DISABLED - use --face-tracking to enable")
@@ -219,16 +221,17 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False,
     # Video stream socket
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    # Mouse control socket
+    # Mouse control socket (only needed if not stream-only mode)
     mouse_socket = None
-    try:
-        mouse_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        logger.info(f"Connecting to mouse control server at {host}:{mouse_port}")
-        mouse_socket.connect((host, mouse_port))
-        logger.info(f"Mouse control connected successfully to {host}:{mouse_port}")
-    except Exception as e:
-        logger.error(f"Mouse control connection failed: {e}")
-        mouse_socket = None
+    if not stream_only:
+        try:
+            mouse_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            logger.info(f"Connecting to mouse control server at {host}:{mouse_port}")
+            mouse_socket.connect((host, mouse_port))
+            logger.info(f"Mouse control connected successfully to {host}:{mouse_port}")
+        except Exception as e:
+            logger.error(f"Mouse control connection failed: {e}")
+            mouse_socket = None
 
     logger.info(f"Connecting to video stream at {host}:{port}...")
     try:
@@ -251,18 +254,24 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False,
         frame_count = 0
         while True:
             frame_count += 1
-            logger.debug(f"Starting frame {frame_count} processing")
+
+            if not stream_only:
+                logger.debug(f"Starting frame {frame_count} processing")
+
             # Receive frame size
-            logger.debug(f"Waiting for frame size data ({payload_size} bytes needed)")
+            if not stream_only:
+                logger.debug(f"Waiting for frame size data ({payload_size} bytes needed)")
             while len(data) < payload_size:
-                logger.debug(f"Received {len(data)} bytes so far, waiting for {payload_size - len(data)} more")
+                if not stream_only:
+                    logger.debug(f"Received {len(data)} bytes so far, waiting for {payload_size - len(data)} more")
                 try:
                     chunk = client_socket.recv(4096)
                     if not chunk:
                         logger.error("Server closed connection while waiting for frame size")
                         return
                     data += chunk
-                    logger.debug(f"Received chunk of {len(chunk)} bytes, total now {len(data)}")
+                    if not stream_only:
+                        logger.debug(f"Received chunk of {len(chunk)} bytes, total now {len(data)}")
                 except socket.timeout:
                     logger.error("Timeout waiting for frame size data")
                     return
@@ -279,82 +288,86 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False,
             data = data[msg_size:]
 
             # Decode frame
-            logger.debug(f"Received frame data of length: {len(frame_data)} bytes")
+            if not stream_only:
+                logger.debug(f"Received frame data of length: {len(frame_data)} bytes")
             frame = cv2.imdecode(np.frombuffer(frame_data, dtype=np.uint8), cv2.IMREAD_COLOR)
 
             if frame is not None:
-                logger.debug(f"Decoded frame successfully, shape: {frame.shape}")
-                logger.info(f"Processing frame {frame.shape} - face tracking enabled: {enable_face_tracking}")
-                # Get window info for coordinate scaling
-                original_frame = frame.copy()  # Keep original for face detection
-                logger.debug("Frame copied for face detection")
+                if not stream_only:
+                    logger.debug(f"Decoded frame successfully, shape: {frame.shape}")
+                    logger.info(f"Processing frame {frame.shape} - face tracking enabled: {enable_face_tracking}")
 
-                # Perform face detection if enabled (skip frames for performance)
-                faces = []  # Initialize faces list
-                frame_counter += 1
-                should_detect_faces = enable_face_tracking and mouse_socket and (frame_counter % 3 == 0)  # Process every 3rd frame
+                if not stream_only:
+                    # Get window info for coordinate scaling
+                    original_frame = frame.copy()  # Keep original for face detection
+                    logger.debug("Frame copied for face detection")
 
-                logger.debug(f"Frame processing: enable_face_tracking={enable_face_tracking}, mouse_socket={mouse_socket is not None}, frame_counter={frame_counter}, should_detect={should_detect_faces}")
-                if should_detect_faces:
-                    logger.info(f"Face tracking enabled, processing frame for faces using {face_detection_method} method")
-                    logger.debug(f"Frame shape for detection: {original_frame.shape}")
-                    faces = detect_faces(original_frame, method=face_detection_method,
-                                       confidence_threshold=face_confidence_threshold)
-                    logger.debug(f"Face detection returned {len(faces)} faces")
-                elif enable_face_tracking and mouse_socket is None:
-                    logger.warning("Face tracking enabled but mouse socket is None - cannot send mouse commands")
-                elif not enable_face_tracking:
-                    logger.debug("Face tracking disabled - skipping face detection")
-                else:
-                    logger.debug("Face tracking conditions not met")
+                    # Perform face detection if enabled (skip frames for performance)
+                    faces = []  # Initialize faces list
+                    frame_counter += 1
+                    should_detect_faces = enable_face_tracking and mouse_socket and (frame_counter % 3 == 0)  # Process every 3rd frame
 
-                # Process detected faces and move mouse cursor
-                if len(faces) > 0:
-                    # Use the largest face (or first face if multiple)
-                    largest_face = max(faces, key=lambda f: f[2] * f[3])
-                    face_x, face_y, face_w, face_h = largest_face
+                    logger.debug(f"Frame processing: enable_face_tracking={enable_face_tracking}, mouse_socket={mouse_socket is not None}, frame_counter={frame_counter}, should_detect={should_detect_faces}")
+                    if should_detect_faces:
+                        logger.info(f"Face tracking enabled, processing frame for faces using {face_detection_method} method")
+                        logger.debug(f"Frame shape for detection: {original_frame.shape}")
+                        faces = detect_faces(original_frame, method=face_detection_method,
+                                           confidence_threshold=face_confidence_threshold)
+                        logger.debug(f"Face detection returned {len(faces)} faces")
+                    elif enable_face_tracking and mouse_socket is None:
+                        logger.warning("Face tracking enabled but mouse socket is None - cannot send mouse commands")
+                    elif not enable_face_tracking:
+                        logger.debug("Face tracking disabled - skipping face detection")
+                    else:
+                        logger.debug("Face tracking conditions not met")
 
-                    logger.info(f"Selected largest face: position ({face_x}, {face_y}), size {face_w}x{face_h}")
+                    # Process detected faces and move mouse cursor
+                    if len(faces) > 0:
+                        # Use the largest face (or first face if multiple)
+                        largest_face = max(faces, key=lambda f: f[2] * f[3])
+                        face_x, face_y, face_w, face_h = largest_face
 
-                    # Calculate center of face
-                    face_center_x = face_x + face_w // 2
-                    face_center_y = face_y + face_h // 2
+                        logger.info(f"Selected largest face: position ({face_x}, {face_y}), size {face_w}x{face_h}")
 
-                    logger.debug(f"Face center in frame coordinates: ({face_center_x}, {face_center_y})")
+                        # Calculate center of face
+                        face_center_x = face_x + face_w // 2
+                        face_center_y = face_y + face_h // 2
 
-                    # Scale coordinates to original screen size
-                    scale_x = 1920 / frame.shape[1]  # Assuming server streams at 1920x1080
-                    scale_y = 1080 / frame.shape[0]
+                        logger.debug(f"Face center in frame coordinates: ({face_center_x}, {face_center_y})")
 
-                    screen_x = int(face_center_x * scale_x)
-                    screen_y = int(face_center_y * scale_y)
+                        # Scale coordinates to original screen size
+                        scale_x = 1920 / frame.shape[1]  # Assuming server streams at 1920x1080
+                        scale_y = 1080 / frame.shape[0]
 
-                    logger.info(f"Scaled to screen coordinates: ({screen_x}, {screen_y}) with scale factors ({scale_x:.2f}, {scale_y:.2f})")
+                        screen_x = int(face_center_x * scale_x)
+                        screen_y = int(face_center_y * scale_y)
 
-                    # Send mouse move command to face position
-                    command = {
-                        'type': 'move',
-                        'x': screen_x,
-                        'y': screen_y
-                    }
+                        logger.info(f"Scaled to screen coordinates: ({screen_x}, {screen_y}) with scale factors ({scale_x:.2f}, {scale_y:.2f})")
 
-                    logger.debug(f"Sending face tracking mouse command: {command}")
+                        # Send mouse move command to face position
+                        command = {
+                            'type': 'move',
+                            'x': screen_x,
+                            'y': screen_y
+                        }
 
-                    try:
-                        message = json.dumps(command) + '\n'
-                        mouse_socket.sendall(message.encode('utf-8'))
-                        logger.info(f"Face tracking: moved cursor to ({screen_x}, {screen_y})")
-                    except Exception as e:
-                        logger.error(f"Failed to send face tracking command: {e}")
+                        logger.debug(f"Sending face tracking mouse command: {command}")
 
-                # Draw face rectangles for visualization (only if faces were detected)
-                if len(faces) > 0:
-                    frame = draw_face_rectangles(frame, faces)
+                        try:
+                            message = json.dumps(command) + '\n'
+                            mouse_socket.sendall(message.encode('utf-8'))
+                            logger.info(f"Face tracking: moved cursor to ({screen_x}, {screen_y})")
+                        except Exception as e:
+                            logger.error(f"Failed to send face tracking command: {e}")
+
+                    # Draw face rectangles for visualization (only if faces were detected)
+                    if len(faces) > 0:
+                        frame = draw_face_rectangles(frame, faces)
 
                 cv2.imshow(window_name, frame)
 
-                # Set up mouse callback only once when window is first shown
-                if not mouse_callback_set:
+                # Set up mouse callback only once when window is first shown (only if not stream-only)
+                if not stream_only and not mouse_callback_set:
                     window_info = {
                         'original_width': 1920,  # Assuming server streams at 1920x1080
                         'original_height': 1080,
@@ -374,7 +387,8 @@ def receive_stream(host, port=8080, mouse_port=8081, enable_face_tracking=False,
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
             else:
-                logger.warning("Failed to decode frame")
+                if not stream_only:
+                    logger.warning("Failed to decode frame")
 
     except Exception as e:
         print(f"Error: {e}")
@@ -439,6 +453,8 @@ if __name__ == "__main__":
                        default='haar', help='Face detection method: haar (fast, recommended) or dnn (accurate but slower)')
     parser.add_argument('--face-confidence-threshold', type=float, default=0.5,
                        help='Minimum confidence threshold for DNN face detection (0.0-1.0)')
+    parser.add_argument('--stream', action='store_true',
+                       help='Stream-only mode: display video without mouse control or face tracking for latency testing')
     parser.add_argument('--log-level', choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'],
                        default='DEBUG', help='Set logging level (default: DEBUG)')
 
@@ -463,4 +479,5 @@ if __name__ == "__main__":
         receive_stream(args.host, port=args.port, mouse_port=args.mouse_port,
                       enable_face_tracking=args.face_tracking,
                       face_detection_method=args.face_detection_method,
-                      face_confidence_threshold=args.face_confidence_threshold)
+                      face_confidence_threshold=args.face_confidence_threshold,
+                      stream_only=args.stream)
